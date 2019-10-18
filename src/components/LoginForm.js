@@ -37,9 +37,16 @@ export default class LoginForm extends Component {
   }
 
   formSubmit = (e) => {
-    const {name, password, age, budget} = this.state
     e.preventDefault()
-    this.props.onSubmitLogIn({name, password})
+
+    const {state: {name, password, age, budget},
+           props: {isReturningUser, onSubmitLogIn, onSubmitSignUp}}
+           = this
+
+    isReturningUser ?
+    onSubmitLogIn({name, password})
+    :
+    onSubmitSignUp({name, password, age, budget})
   }
 
   render() {

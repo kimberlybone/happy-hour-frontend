@@ -5,7 +5,7 @@ const URL = 'http://localhost:3000'
 class App extends Component {
 
   state = {
-    isReturningUser: true
+    isReturningUser: false
   }
 
   onSubmitLogIn = (user) => {
@@ -22,13 +22,30 @@ class App extends Component {
     .then(console.log)
   }
 
+  onSubmitSignUp = (user) => {
+    let config = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }
+    fetch(URL + '/users', config)
+    .then(res => res.json())
+    .then(console.log)
+  }
+
   render() {
-    const { state: {isReturningUser}, onSubmitLogIn } = this
+    const { state: {isReturningUser},
+            onSubmitLogIn, onSubmitSignUp } = this
+            
     return (
       <div className="App">
         < LoginForm
         isReturningUser={ isReturningUser }
-        onSubmitLogIn={ onSubmitLogIn }/>
+        onSubmitLogIn={ onSubmitLogIn }
+        onSubmitSignUp={ onSubmitSignUp }/>
       </div>
     );
   };
