@@ -1,20 +1,32 @@
 import React, { Component, Fragment } from 'react';
+import {NavLink} from 'react-router-dom'
 
 export default class LoginForm extends Component {
 
   state = {
     name: '',
-    budget: '',
+    password: '',
     age: '',
     budget: ''
   }
 
   renderForm = () => {
-    const { props: {isReturningUser}, onFormChange, renderSignUpForm } = this;
+    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit,
+            state: {name, password}} = this;
     return (
-      < form onChange={ onFormChange }>
-        Name: < input type='text' id='name' name='name' />
-        Password: < input type='text' id='password' name='password' />
+      < form onChange={ onFormChange } onSubmit={formSubmit}>
+        Name: < input
+                type='text'
+                id='name'
+                name='name'
+                placeholder='Name'
+                value={name}/>
+        Password: < input
+                    type='password'
+                    id='password'
+                    name='password'
+                    placeholder='Password'
+                    value={password}/>
         { !isReturningUser ? renderSignUpForm() : null }
         < input type='submit' />
       </ form >
@@ -22,17 +34,46 @@ export default class LoginForm extends Component {
   }
 
   renderSignUpForm = () => {
+    const {state: {age, budget}} = this
     return (
       < Fragment >
-        Age: < input type='number' id='age' name='age' />
-        Budget: $< input type='number' id='budget' name='budget' />
+        Age: < input
+                type='number'
+                id='age'
+                name='age'
+                placeholder='Age'
+                value={age}/>
+      Budget: $< input
+                  type='number'
+                  id='budget'
+                  name='budget'
+                  placeholder='Budget'value={budget}/>
       </ Fragment >
     )
   }
 
-  onFormChange = evt => {
+  onFormChange = e => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [e.target.name]: e.target.value
+    })
+  }
+
+  formSubmit = (e) => {
+    e.preventDefault()
+
+    const {state: {name, password, age, budget},
+           props: {isReturningUser, onSubmitLogIn, onSubmitSignUp}}
+           = this
+
+    isReturningUser ?
+    onSubmitLogIn({name, password})
+    :
+    onSubmitSignUp({name, password, age, budget})
+    this.setState({
+      name: '',
+      password: '',
+      age: '',
+      budget: ''
     })
   }
 
@@ -42,6 +83,8 @@ export default class LoginForm extends Component {
     return (
 
       < div >
+        <NavLink to='/login'>Log In</NavLink>
+        <NavLink to='/signup'>Sign Up</NavLink>
         { renderForm() }
       </ div >
     )
