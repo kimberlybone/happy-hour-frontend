@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './components/LoginForm'
 
-function App() {
-  return (
-    <div className="App">
-      < LoginForm />
-    </div>
-  );
-}
+class App extends Component {
+
+  state = {
+    isReturningUser: false
+  }
+
+  render() {
+    const { state: {isReturningUser} } = this
+    return (
+      <div className="App">
+        < LoginForm isReturningUser={ isReturningUser }/>
+      </div>
+    );
+  };
+};
 
 export default App;
