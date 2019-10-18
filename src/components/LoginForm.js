@@ -4,17 +4,17 @@ export default class LoginForm extends Component {
 
   state = {
     name: '',
-    budget: '',
+    password: '',
     age: '',
     budget: ''
   }
 
   renderForm = () => {
-    const { props: {isReturningUser}, onFormChange, renderSignUpForm } = this;
+    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit } = this;
     return (
-      < form onChange={ onFormChange }>
+      < form onChange={ onFormChange } onSubmit={formSubmit}>
         Name: < input type='text' id='name' name='name' />
-        Password: < input type='text' id='password' name='password' />
+        Password: < input type='password' id='password' name='password' />
         { !isReturningUser ? renderSignUpForm() : null }
         < input type='submit' />
       </ form >
@@ -30,10 +30,16 @@ export default class LoginForm extends Component {
     )
   }
 
-  onFormChange = evt => {
+  onFormChange = e => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [e.target.name]: e.target.value
     })
+  }
+
+  formSubmit = (e) => {
+    const {name, password, age, budget} = this.state
+    e.preventDefault()
+    this.props.onSubmitLogIn({name, password})
   }
 
   render() {
