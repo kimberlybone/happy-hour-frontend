@@ -8,7 +8,8 @@ const URL = 'http://localhost:3000'
 class App extends Component {
 
   state = {
-    isReturningUser: true
+    isReturningUser: true,
+    errors: []
   }
 
   onSubmitLogIn = (user) => {
@@ -22,7 +23,13 @@ class App extends Component {
     }
     fetch(URL + '/login', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(data => {
+      if (data.errors) {
+        this.setState({
+          errors: data.errors
+        })
+      }
+    })
   }
 
   onSubmitSignUp = (user) => {
@@ -36,11 +43,17 @@ class App extends Component {
     }
     fetch(URL + '/users', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(data => {
+      if (data.errors) {
+        this.setState({
+          errors: data.errors
+        })
+      }
+    })
   }
 
   render() {
-    const { state: {isReturningUser},
+    const { state: {isReturningUser, errors},
             onSubmitLogIn, onSubmitSignUp } = this
 
     return (
@@ -50,6 +63,7 @@ class App extends Component {
           render={(props) =>
             < LoginForm {...props}
             isReturningUser={ true }
+            errors={ errors }
             onSubmitLogIn={ onSubmitLogIn }
             onSubmitSignUp={ onSubmitSignUp }/>}
            />
@@ -58,6 +72,7 @@ class App extends Component {
            render={(props) =>
              < LoginForm {...props}
              isReturningUser={ false }
+             errors={ errors }
              onSubmitLogIn={ onSubmitLogIn }
              onSubmitSignUp={ onSubmitSignUp }/>}
             />

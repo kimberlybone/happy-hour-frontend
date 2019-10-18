@@ -11,10 +11,11 @@ export default class LoginForm extends Component {
   }
 
   renderForm = () => {
-    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit,
+    const { props: {isReturningUser, errors}, onFormChange, renderSignUpForm, formSubmit, renderErrors,
             state: {name, password}} = this;
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit}>
+      { errors ? renderErrors() : null }
         Name: < input
                 type='text'
                 id='name'
@@ -50,6 +51,10 @@ export default class LoginForm extends Component {
                   placeholder='Budget'value={budget}/>
       </ Fragment >
     )
+  }
+
+  renderErrors = () => {
+    return this.props.errors.map(error => error)
   }
 
   onFormChange = e => {
