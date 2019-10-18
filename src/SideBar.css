@@ -1,0 +1,8 @@
+.side-bar {
+  grid-area: side-bar;
+  background-color: blue;
+}
+.user-div {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
