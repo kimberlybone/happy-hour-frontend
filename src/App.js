@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './components/LoginForm'
+import HomeContainer from './containers/HomeContainer'
 import {Route, NavLink, Switch, Link} from 'react-router-dom'
 
 const URL = 'http://localhost:3000'
@@ -67,15 +68,19 @@ class App extends Component {
             onSubmitLogIn={ onSubmitLogIn }
             onSubmitSignUp={ onSubmitSignUp }/>}
            />
-         <Route exact
-           path= '/signup'
-           render={(props) =>
-             < LoginForm {...props}
-             isReturningUser={ false }
-             errors={ errors }
-             onSubmitLogIn={ onSubmitLogIn }
-             onSubmitSignUp={ onSubmitSignUp }/>}
-            />
+        <Route exact
+          path= '/signup'
+          render={(props) =>
+            < LoginForm {...props}
+            isReturningUser={ false }
+            errors={ errors }
+            onSubmitLogIn={ onSubmitLogIn }
+            onSubmitSignUp={ onSubmitSignUp }/>}
+           />
+           <Route exact
+             path='/'
+             render={ () => < HomeContainer /> }
+             />
       </div>
     );
   };

@@ -88,6 +88,7 @@ export default class LoginForm extends Component {
     return (
 
       < div >
+        < h1 >Happy Hour</ h1 >
         <NavLink to='/login'>Log In</NavLink>
         <NavLink to='/signup'>Sign Up</NavLink>
         { renderForm() }
