@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './components/LoginForm'
+import {Route, NavLink, Switch, Link} from 'react-router-dom'
+
 const URL = 'http://localhost:3000'
+
 class App extends Component {
 
   state = {
-    isReturningUser: false
+    isReturningUser: true
   }
 
   onSubmitLogIn = (user) => {
@@ -39,13 +42,25 @@ class App extends Component {
   render() {
     const { state: {isReturningUser},
             onSubmitLogIn, onSubmitSignUp } = this
-            
+
     return (
       <div className="App">
-        < LoginForm
-        isReturningUser={ isReturningUser }
-        onSubmitLogIn={ onSubmitLogIn }
-        onSubmitSignUp={ onSubmitSignUp }/>
+        <Route exact
+          path= '/login'
+          render={(props) =>
+            < LoginForm {...props}
+            isReturningUser={ true }
+            onSubmitLogIn={ onSubmitLogIn }
+            onSubmitSignUp={ onSubmitSignUp }/>}
+           />
+         <Route exact
+           path= '/signup'
+           render={(props) =>
+             < LoginForm {...props}
+             isReturningUser={ false }
+             onSubmitLogIn={ onSubmitLogIn }
+             onSubmitSignUp={ onSubmitSignUp }/>}
+            />
       </div>
     );
   };

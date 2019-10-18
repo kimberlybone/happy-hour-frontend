@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import {NavLink} from 'react-router-dom'
 
 export default class LoginForm extends Component {
 
@@ -10,11 +11,22 @@ export default class LoginForm extends Component {
   }
 
   renderForm = () => {
-    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit } = this;
+    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit,
+            state: {name, password}} = this;
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit}>
-        Name: < input type='text' id='name' name='name' />
-        Password: < input type='password' id='password' name='password' />
+        Name: < input
+                type='text'
+                id='name'
+                name='name'
+                placeholder='Name'
+                value={name}/>
+        Password: < input
+                    type='password'
+                    id='password'
+                    name='password'
+                    placeholder='Password'
+                    value={password}/>
         { !isReturningUser ? renderSignUpForm() : null }
         < input type='submit' />
       </ form >
@@ -22,10 +34,20 @@ export default class LoginForm extends Component {
   }
 
   renderSignUpForm = () => {
+    const {state: {age, budget}} = this
     return (
       < Fragment >
-        Age: < input type='number' id='age' name='age' />
-        Budget: $< input type='number' id='budget' name='budget' />
+        Age: < input
+                type='number'
+                id='age'
+                name='age'
+                placeholder='Age'
+                value={age}/>
+      Budget: $< input
+                  type='number'
+                  id='budget'
+                  name='budget'
+                  placeholder='Budget'value={budget}/>
       </ Fragment >
     )
   }
@@ -47,6 +69,12 @@ export default class LoginForm extends Component {
     onSubmitLogIn({name, password})
     :
     onSubmitSignUp({name, password, age, budget})
+    this.setState({
+      name: '',
+      password: '',
+      age: '',
+      budget: ''
+    })
   }
 
   render() {
@@ -55,6 +83,8 @@ export default class LoginForm extends Component {
     return (
 
       < div >
+        <NavLink to='/login'>Log In</NavLink>
+        <NavLink to='/signup'>Sign Up</NavLink>
         { renderForm() }
       </ div >
     )
