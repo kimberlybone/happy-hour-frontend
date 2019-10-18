@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './components/LoginForm'
-import {Route, NavLink, Switch, Link} from 'react-router-dom'
+import HomeContainer from './containers/HomeContainer'
+import {Route, NavLink, Switch, Link, withRouter} from 'react-router-dom'
 
 const URL = 'http://localhost:3000'
 
 class App extends Component {
 
   state = {
-    isReturningUser: true
+    errors: [],
+    user: null,
+    token: ''
   }
 
   onSubmitLogIn = (user) => {
@@ -22,7 +25,18 @@ class App extends Component {
     }
     fetch(URL + '/login', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(data => {
+      console.log(data);
+      if (data.errors) {
+        this.setState({
+          errors: data.errors
+        })
+      } else {
+        this.setState({
+          user: null
+        }, () => this.goHome())
+      }
+    })
   }
 
   onSubmitSignUp = (user) => {
@@ -36,11 +50,21 @@ class App extends Component {
     }
     fetch(URL + '/users', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(data => {
+      if (data.errors) {
+        this.setState({
+          errors: data.errors
+        })
+      }
+    })
   }
 
+  goHome = () => {
+    this.props.history.push('/');
+  };
+
   render() {
-    const { state: {isReturningUser},
+    const { state: {isReturningUser, errors},
             onSubmitLogIn, onSubmitSignUp } = this
 
     return (
@@ -50,20 +74,26 @@ class App extends Component {
           render={(props) =>
             < LoginForm {...props}
             isReturningUser={ true }
+            errors={ errors }
             onSubmitLogIn={ onSubmitLogIn }
             onSubmitSignUp={ onSubmitSignUp }/>}
            />
-         <Route exact
-           path= '/signup'
-           render={(props) =>
-             < LoginForm {...props}
-             isReturningUser={ false }
-             onSubmitLogIn={ onSubmitLogIn }
-             onSubmitSignUp={ onSubmitSignUp }/>}
-            />
+        <Route exact
+          path= '/signup'
+          render={(props) =>
+            < LoginForm {...props}
+            isReturningUser={ false }
+            errors={ errors }
+            onSubmitLogIn={ onSubmitLogIn }
+            onSubmitSignUp={ onSubmitSignUp }/>}
+           />
+           <Route exact
+             path='/'
+             render={ () => < HomeContainer /> }
+             />
       </div>
     );
   };
 };
 
-export default App;
+export default withRouter(App);

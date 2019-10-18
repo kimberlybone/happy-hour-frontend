@@ -11,10 +11,11 @@ export default class LoginForm extends Component {
   }
 
   renderForm = () => {
-    const { props: {isReturningUser}, onFormChange, renderSignUpForm, formSubmit,
+    const { props: {isReturningUser, errors}, onFormChange, renderSignUpForm, formSubmit, renderErrors,
             state: {name, password}} = this;
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit}>
+      { errors ? renderErrors() : null }
         Name: < input
                 type='text'
                 id='name'
@@ -52,6 +53,10 @@ export default class LoginForm extends Component {
     )
   }
 
+  renderErrors = () => {
+    return this.props.errors.map(error => error)
+  }
+
   onFormChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -83,6 +88,7 @@ export default class LoginForm extends Component {
     return (
 
       < div >
+        < h1 >Happy Hour</ h1 >
         <NavLink to='/login'>Log In</NavLink>
         <NavLink to='/signup'>Sign Up</NavLink>
         { renderForm() }
