@@ -5,9 +5,8 @@ export default class MainContainer extends Component {
   render(){
     return (
       <div className="main-container">
-        < h1 > Happy Hour </ h1 >
-        <div className="main-div">MC1</div>
-        <div>MC2</div>
+        <div className="main-div">< h1 style={{color: 'white'}}> Happy Hour </ h1 ></div>
+        <div className="main-div2">MC2</div>
       </div>
     )
   }
