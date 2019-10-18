@@ -8,7 +8,7 @@ export default class HomeContainer extends Component {
 
   render() {
     return (
-      "HOME"
+      < h1 >Happy Hour</ h1 >
     )
   }
 
