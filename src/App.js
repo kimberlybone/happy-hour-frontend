@@ -25,16 +25,13 @@ class App extends Component {
     }
     fetch(URL + '/login', config)
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if (data.errors) {
+    .then(user => {
+      if (user.errors) {
         this.setState({
-          errors: data.errors
+          errors: user.errors
         })
       } else {
-        this.setState({
-          user: null
-        }, () => this.goHome())
+        this.setState({user}, () => this.goHome())
       }
     })
   }
@@ -50,10 +47,10 @@ class App extends Component {
     }
     fetch(URL + '/users', config)
     .then(res => res.json())
-    .then(data => {
-      if (data.errors) {
+    .then(user => {
+      if (user.errors) {
         this.setState({
-          errors: data.errors
+          errors: user.errors
         })
       }
     })
@@ -64,8 +61,8 @@ class App extends Component {
   };
 
   render() {
-    const { state: {isReturningUser, errors},
-            onSubmitLogIn, onSubmitSignUp } = this
+    const { state: {isReturningUser, errors, user},
+            onSubmitLogIn, onSubmitSignUp} = this
 
     return (
       <div className="App">
@@ -89,7 +86,8 @@ class App extends Component {
            />
            <Route exact
              path='/'
-             render={ () => < HomeContainer /> }
+             render={ () => < HomeContainer
+               user={user}/> }
              />
       </div>
     );

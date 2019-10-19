@@ -10,9 +10,10 @@ export default class HomeContainer extends Component {
 
 
   render() {
+    const {user} = this.props
     return (
       <div className="home-container">
-        < SideBar />
+        < SideBar user={user}/>
         < MainContainer />
       </div>
     )
