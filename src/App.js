@@ -3,8 +3,10 @@ import './App.css';
 import LoginForm from './components/LoginForm'
 import HomeContainer from './containers/HomeContainer'
 import {Route, NavLink, Switch, Link, withRouter} from 'react-router-dom'
+import 'bulma/css/bulma.css'
 
 const URL = 'http://localhost:3000'
+const api = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
 
 class App extends Component {
 
@@ -61,7 +63,7 @@ class App extends Component {
   };
 
   render() {
-    const { state: {isReturningUser, errors, user},
+    const { state: {errors, user},
             onSubmitLogIn, onSubmitSignUp} = this
 
     return (

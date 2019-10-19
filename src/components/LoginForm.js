@@ -16,20 +16,43 @@ export default class LoginForm extends Component {
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit}>
       { errors ? renderErrors() : null }
-        Name: < input
-                type='text'
-                id='name'
-                name='name'
-                placeholder='Name'
-                value={name}/>
-        Password: < input
-                    type='password'
-                    id='password'
-                    name='password'
-                    placeholder='Password'
-                    value={password}/>
-        { !isReturningUser ? renderSignUpForm() : null }
-        < input type='submit' />
+      <div className='field'>
+        <label className='label'>Name</label>
+        <div className='control has-icons-left has-icons-right'>
+          < input
+          className='input is-success'
+          type='text'
+          id='name'
+          name='name'
+          placeholder='Name'
+          value={name}/>
+        <span className='icon is-small is-left'>
+          <i className='fas fa-user'></i>
+          </span>
+          <span className='icon is-small is-right'>
+            <i className='fas fa-check'></i>
+          </span>
+        </div>
+        <p className='help is-success'>This name is available</p>
+      </div>
+
+      <div class="field">
+        <label className='label'>Password</label>
+          <div class="control has-icons-left">
+            < input
+            className='input'
+            type='password'
+            id='password'
+            name='password'
+            placeholder='Password'
+            value={password}/>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
+      </div>
+      { !isReturningUser ? renderSignUpForm() : null }
+      < input type='submit' />
       </ form >
     )
   }
@@ -38,17 +61,36 @@ export default class LoginForm extends Component {
     const {state: {age, budget}} = this
     return (
       < Fragment >
-        Age: < input
+      <div className='field'>
+        <label className='label'>Age</label>
+        <div className='control has-icons-left has-icons-right'>
+          < input
+                className='input'
                 type='number'
                 id='age'
                 name='age'
                 placeholder='Age'
                 value={age}/>
-      Budget: $< input
+            <span class="icon is-small is-left">
+              <i class="fas fa-cocktail"></i>
+            </span>
+          </div>
+        </div>
+
+        <div className='field'>
+          <label className='label'>Budget</label>
+          <div className='control has-icons-left has-icons-right'>
+            < input
+                  className='input'
                   type='number'
                   id='budget'
                   name='budget'
                   placeholder='Budget'value={budget}/>
+              <span class="icon is-small is-left">
+                <i class="fas fa-dollar-sign"></i>
+              </span>
+            </div>
+          </div>
       </ Fragment >
     )
   }
@@ -87,10 +129,10 @@ export default class LoginForm extends Component {
     console.log(isReturningUser);
     return (
 
-      < div >
+      < div className='form-div'>
         < h1 >Happy Hour</ h1 >
-        <NavLink to='/login'>Log In</NavLink>
-        <NavLink to='/signup'>Sign Up</NavLink>
+        <NavLink to='/login' activeClassName="active" className="link">Log In</NavLink>
+        <NavLink to='/signup' activeClassName="active" className="link">Sign Up</NavLink>
         { renderForm() }
       </ div >
     )
