@@ -36,9 +36,9 @@ export default class LoginForm extends Component {
         <p className='help is-success'>This name is available</p>
       </div>
 
-      <div class="field">
+      <div className="field">
         <label className='label'>Password</label>
-          <div class="control has-icons-left">
+          <div className="control has-icons-left">
             < input
             className='input'
             type='password'
@@ -46,13 +46,13 @@ export default class LoginForm extends Component {
             name='password'
             placeholder='Password'
             value={password}/>
-          <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
+          <span className="icon is-small is-left">
+            <i className="fas fa-lock"></i>
           </span>
         </div>
       </div>
       { !isReturningUser ? renderSignUpForm() : null }
-      < input type='submit' />
+      < input className="button is-primary is-light" type="submit" value={ isReturningUser ? 'Log In' : 'Sign Up' } />
       </ form >
     )
   }
@@ -71,8 +71,8 @@ export default class LoginForm extends Component {
                 name='age'
                 placeholder='Age'
                 value={age}/>
-            <span class="icon is-small is-left">
-              <i class="fas fa-cocktail"></i>
+              <span className="icon is-small is-left">
+              <i className="fas fa-cocktail"></i>
             </span>
           </div>
         </div>
@@ -86,8 +86,8 @@ export default class LoginForm extends Component {
                   id='budget'
                   name='budget'
                   placeholder='Budget'value={budget}/>
-              <span class="icon is-small is-left">
-                <i class="fas fa-dollar-sign"></i>
+                <span className="icon is-small is-left">
+                <i className="fas fa-dollar-sign"></i>
               </span>
             </div>
           </div>
@@ -130,11 +130,11 @@ export default class LoginForm extends Component {
     return (
 
       < div className='form-div'>
-        < h1 >Happy Hour</ h1 >
-        <NavLink to='/login' activeClassName="active" className="link">Log In</NavLink>
-        <NavLink to='/signup' activeClassName="active" className="link">Sign Up</NavLink>
+        < h1 >Happy Hour< /h1 >
+        < NavLink to='/login' className="button is-primary is-light login-btn">Log In</ NavLink>
+        < NavLink to='/signup' className="button is-primary is-light login-btn">Sign Up< /NavLink >
         { renderForm() }
-      </ div >
+      < /div >
     )
   };
 

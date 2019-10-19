@@ -21,13 +21,17 @@
 .App-link {
   color: #09d3ac;
 }
+
 form {
   width: 50vw;
 }
+
 .active {
-  background-color: blue;
-  color: black;
+  background-color: black;
+  font-weight: bold;
+  text-decoration: underline;
 }
-.link {
-  border: black;
+
+.login-btn {
+  width: 25vw;
 }
