@@ -5,17 +5,25 @@ import '../HomeContainer.css';
 
 export default class HomeContainer extends Component {
 
+  state = {
+    viewMenu: false
+  }
 
-
-
+  handleViewMenu = () => {
+    this.setState({
+      viewMenu: true
+    })
+  }
 
   render() {
-    const { loggedInUserId, token } = this.props
+    const { props:{ loggedInUserId, token }, handleViewMenu, state:{ viewMenu }} = this
+    console.log(this.state.viewMenu)
     return (
       <div className="home-container">
         < SideBar loggedInUserId={ loggedInUserId }
-                  token={ token }/>
-        < MainContainer />
+                  token={ token }
+                  viewMenu={ handleViewMenu }/>
+                < MainContainer viewMenu={ viewMenu }/>
       </div>
     )
   }
