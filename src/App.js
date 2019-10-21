@@ -12,8 +12,18 @@ class App extends Component {
 
   state = {
     errors: [],
-    user: null,
-    token: ''
+    loggedInUserId: localStorage.loggedInUserId,
+    token: localStorage.token
+  }
+
+  setAuth = (loggedInUserId, token) => {
+    localStorage.loggedInUserId = loggedInUserId;
+    localStorage.token = token;
+    console.log(localStorage);
+    this.setState({
+      loggedInUserId,
+      token
+    }, () => this.goHome())
   }
 
   onSubmitLogIn = (user) => {
@@ -33,7 +43,7 @@ class App extends Component {
           errors: user.errors
         })
       } else {
-        this.setState({user}, () => this.goHome())
+        this.setAuth(user.user_id, user.token)
       }
     })
   }
@@ -54,6 +64,8 @@ class App extends Component {
         this.setState({
           errors: user.errors
         })
+      } else {
+        this.setAuth(user.user_id, user.token)
       }
     })
   }
@@ -63,8 +75,8 @@ class App extends Component {
   };
 
   render() {
-    const { state: {errors, user},
-            onSubmitLogIn, onSubmitSignUp} = this
+    const { state: {errors, loggedInUserId, token},
+            onSubmitLogIn, onSubmitSignUp } = this
 
     return (
       <div className="App">
@@ -89,7 +101,8 @@ class App extends Component {
            <Route exact
              path='/'
              render={ () => < HomeContainer
-               user={user}/> }
+               loggedInUserId={ loggedInUserId }
+               token={ token }/> }
              />
       </div>
     );

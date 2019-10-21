@@ -10,10 +10,11 @@ export default class HomeContainer extends Component {
 
 
   render() {
-    const {user} = this.props
+    const { loggedInUserId, token } = this.props
     return (
       <div className="home-container">
-        < SideBar user={user}/>
+        < SideBar loggedInUserId={ loggedInUserId }
+                  token={ token }/>
         < MainContainer />
       </div>
     )
