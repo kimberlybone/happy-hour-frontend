@@ -11,12 +11,15 @@ export default class Filter extends Component {
     })
   }
 
+  handleChange = e => {
+    this.props.handleFilteredItems(e.target.value)
+    console.log(e.target.value)
+  }
+
   render() {
-    const {categories} = this.props
-    console.log(categories)
     return (
       <div>
-        Filter Drink By: < select onChange={}>
+        Filter Drink By: < select onChange={this.handleChange}>
           {this.handleCategories()}
         < /select >
       </div>

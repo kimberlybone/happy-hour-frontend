@@ -10,3 +10,11 @@ ul {
   list-style: none;
   padding-left: 0px;
 }
+.side-button {
+  border-radius: 4px;
+}
+.side-button:hover {
+  background-color: #ebfffc;
+  cursor: pointer;
+  box-shadow: 3px 3px 7px grey;
+}

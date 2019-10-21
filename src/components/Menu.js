@@ -17,17 +17,15 @@ export default class Menu extends Component {
     })
   }
 
-  getCategories = () => {
-    const {menuItems} = this.props
-    const categories = menuItems.map(item => item.category)
-    return categories.filter((item, index) => categories.indexOf(item) === index)
-  }
 
   render() {
     return (
       < div id='menu' >
         < h1 >Happy Hour Menu</ h1 >
-        < Filter categories={ this.getCategories() }/>
+        < Filter
+        categories={ this.props.categories }
+        handleFilteredItems={ this.props.handleFilteredItems }
+        />
         < ul className='menu-items'>
           {this.renderMenuItems()}
         < / ul >

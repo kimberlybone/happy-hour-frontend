@@ -51,11 +51,11 @@ export default class SideBar extends Component {
           {
             showFavorites ?
             getFavorites()
-            : < button onClick={ handleFavorites }>Favorites< /button >
+            : < button className="side-button" onClick={ handleFavorites }>Favorites< /button >
 
           }
           < br >< /br >
-          < button onClick={ viewMenu }>View Menu< /button >
+          < button className="side-button" onClick={ viewMenu }>View Menu< /button >
         < /div >
       < /div >
     )
