@@ -29,6 +29,7 @@
   z-index: 100;
   background-color: white;
   border-radius: 4px;
+  display: grid;
   grid-template-rows: 20% 70% 10%;
   grid-template-areas:
     'header-div'
@@ -42,5 +43,9 @@ div.menu-items {
 }
 
 div.header-div {
-  grid-area: 
+  grid-area: header-div;
+}
+
+div.menu-close {
+  grid-area: menu-close;
 }
