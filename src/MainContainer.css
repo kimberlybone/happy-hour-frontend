@@ -8,13 +8,14 @@
     'main-div2'
 }
 .main-div {
-  /* grid-area: main-div; */
+  grid-area: main-div;
   background-image: url('https://www.editionhotels.com/wp-content/uploads/2018/09/EDT_BCN2_22_RGB_V2-e1538171311702.jpg');
   filter: blur(8px);
   -webkit-filter: blur(8px);
 }
 
 .main-div2 {
+  grid-area: main-div2;
   filter: blur(8px);
   -webkit-filter: blur(8px);
 }
@@ -27,6 +28,19 @@
   left: 35%;
   z-index: 100;
   background-color: white;
-  overflow: scroll;
   border-radius: 4px;
+  grid-template-rows: 20% 70% 10%;
+  grid-template-areas:
+    'header-div'
+    'menu-items'
+    'menu-close'
+}
+
+div.menu-items {
+  grid-area: menu-items;
+  overflow: scroll;
+}
+
+div.header-div {
+  grid-area: 
 }

@@ -21,14 +21,19 @@ export default class Menu extends Component {
   render() {
     return (
       < div id='menu' >
-        < h1 >Happy Hour Menu</ h1 >
+      < div className='header-div' >
+        < h1 >Happy Hour Menu< / h1 >
         < Filter
         categories={ this.props.categories }
         handleFilteredItems={ this.props.handleFilteredItems }
         />
-        < ul className='menu-items'>
+      < /div>
+        < div className='menu-items'>
           {this.renderMenuItems()}
-        < / ul >
+        < / div >
+        < div className='menu-close' >
+          < button> Close < /button >
+        < /div >
       < / div >
     )
   }
