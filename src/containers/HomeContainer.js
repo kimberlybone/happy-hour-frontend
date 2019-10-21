@@ -23,7 +23,7 @@ export default class HomeContainer extends Component {
         < SideBar loggedInUserId={ loggedInUserId }
                   token={ token }
                   viewMenu={ handleViewMenu } />
-        < MainContainer viewMenu={ viewMenu } />
+        < MainContainer viewMenu={ viewMenu } token={ token } />
       </div>
     )
   }

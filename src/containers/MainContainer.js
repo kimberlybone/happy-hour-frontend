@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import '../MainContainer.css';
 import Menu from '../components/Menu'
 
+const URL = 'http://localhost:3000';
+
 export default class MainContainer extends Component {
 
   state = {
-    
+    menuItems: []
+  }
+
+  componentDidMount() {
+    const { token } = this.props
+    fetch(URL + '/recipes', {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then(menuItems => {
+      console.log(menuItems.slice(0,5));
+      this.setState({menuItems})
+    })
   }
 
   render(){
