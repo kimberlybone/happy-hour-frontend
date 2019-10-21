@@ -6,7 +6,7 @@ import '../HomeContainer.css';
 export default class HomeContainer extends Component {
 
   state = {
-    viewMenu: false
+    viewMenu: true
   }
 
   handleViewMenu = () => {
