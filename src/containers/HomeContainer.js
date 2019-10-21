@@ -17,7 +17,7 @@ export default class HomeContainer extends Component {
 
   render() {
     const { props:{ loggedInUserId, token }, handleViewMenu, state:{ viewMenu }} = this
-    console.log(this.state.viewMenu)
+    // console.log(this.state.viewMenu)
     return (
       <div className="home-container">
         < SideBar loggedInUserId={ loggedInUserId }
