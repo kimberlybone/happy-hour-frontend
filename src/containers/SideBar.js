@@ -40,9 +40,6 @@ export default class SideBar extends Component {
     })
   }
 
-
-
-
   render(){
     const {state: { user, showFavorites },
            props:{ viewMenu }, handleFavorites, getFavorites} = this
@@ -51,18 +48,14 @@ export default class SideBar extends Component {
       < div className="side-bar" >
         { user ? < User user={user} /> : null }
         < div >
-        {
-          showFavorites ?
-          getFavorites()
-          :
-          < button onClick={ handleFavorites }>Favorites< /button >
-
-        }
-          < br >< /br >
           {
+            showFavorites ?
+            getFavorites()
+            : < button onClick={ handleFavorites }>Favorites< /button >
 
-            < button onClick={ viewMenu }>View Menu< /button >
           }
+          < br >< /br >
+          < button onClick={ viewMenu }>View Menu< /button >
         < /div >
       < /div >
     )

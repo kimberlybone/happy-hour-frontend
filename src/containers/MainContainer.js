@@ -4,6 +4,10 @@ import Menu from '../components/Menu'
 
 export default class MainContainer extends Component {
 
+  state = {
+    
+  }
+
   render(){
     return (
       <div className="main-container">
