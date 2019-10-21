@@ -18,7 +18,18 @@
   grid-area: main-div2;
   filter: blur(8px);
   -webkit-filter: blur(8px);
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    'bar-counter'
+    'bar-stools'
 }
+
+.bar-counter {
+  grid-area: bar-counter;
+  background-image: url('../../public/Assets/cartoon-counter.jpg');
+}
+
 
 #menu {
   width: 50%;
