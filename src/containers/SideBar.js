@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../SideBar.css';
 import User from '../components/User'
 
+const URL = 'http://localhost:3000'
+
 export default class SideBar extends Component {
 
   state = {
@@ -10,7 +12,13 @@ export default class SideBar extends Component {
 
   componentDidMount() {
     const { loggedInUserId, token } = this.props
-    fetch()
+    fetch(URL + '/users/' + loggedInUserId, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then(console.log)
   }
 
   render(){
@@ -18,7 +26,7 @@ export default class SideBar extends Component {
 
     return (
       < div className="side-bar" >
-        < User user={user} />
+      {  /*< User user={user} />*/}
         < div >
           < button onClick={ null }>Favorites< /button >
           < br >< /br >
