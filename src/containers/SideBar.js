@@ -10,7 +10,7 @@ export default class SideBar extends Component {
 
   componentDidMount() {
     const { loggedInUserId, token } = this.props
-    fetch
+    fetch()
   }
 
   render(){
