@@ -20,20 +20,21 @@ export default class Menu extends Component {
 
 
   render() {
+    const { props: { handleCloseMenu, categories, handleFilteredItems }, renderMenuItems} = this
     return (
       < div id='menu' >
       < div className='header-div' >
         < h1 >Happy Hour Menu< / h1 >
         < Filter
-        categories={ this.props.categories }
-        handleFilteredItems={ this.props.handleFilteredItems }
+        categories={ categories }
+        handleFilteredItems={ handleFilteredItems }
         />
       < /div>
         < div className='menu-items'>
-          {this.renderMenuItems()}
+          { renderMenuItems() }
         < / div >
         < div className='menu-close' >
-          < button onClick={null}> Close < /button >
+          < button onClick={ handleCloseMenu }> Close < /button >
         < /div >
       < / div >
     )
