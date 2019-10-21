@@ -15,15 +15,28 @@ export default class HomeContainer extends Component {
     })
   }
 
+  handleCloseMenu = () => {
+    this.setState({
+      viewMenu: false
+    })
+  }
+
   render() {
-    const { props:{ loggedInUserId, token }, handleViewMenu, state:{ viewMenu }} = this
-    console.log(this.state.viewMenu)
+    const { props:{ loggedInUserId, token },
+            state:{ viewMenu }, handleCloseMenu, handleViewMenu } = this
+    // console.log(this.state.viewMenu)
     return (
       <div className="home-container">
-        < SideBar loggedInUserId={ loggedInUserId }
-                  token={ token }
-                  viewMenu={ handleViewMenu } />
-        < MainContainer viewMenu={ viewMenu } token={ token } />
+        < SideBar
+            loggedInUserId={ loggedInUserId }
+            token={ token }
+            viewMenu={ handleViewMenu }
+            />
+        < MainContainer
+            viewMenu={ viewMenu }
+            token={ token }
+            handleCloseMenu={ handleCloseMenu }
+            />
       </div>
     )
   }

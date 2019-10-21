@@ -35,27 +35,28 @@ export default class SideBar extends Component {
   }
 
   handleFavorites = () => {
-    this.setState({
-      showFavorites: true
+    this.setState(prevState => {
+      return {showFavorites: !prevState.showFavorites }
+
+
+
+      
     })
   }
 
+
   render(){
     const {state: { user, showFavorites },
-           props:{ viewMenu }, handleFavorites, getFavorites} = this
+           props:{ viewMenu }, handleFavorites, handleOnClick, getFavorites} = this
 
     return (
       < div className="side-bar" >
         { user ? < User user={user} /> : null }
         < div >
-          {
-            showFavorites ?
-            getFavorites()
-            : < button onClick={ handleFavorites }>Favorites< /button >
-
-          }
+        < button className="side-button" onClick={ handleFavorites }> { showFavorites ? "Close" : "Favorites"} < /button >
+          { showFavorites ? getFavorites() : null }
           < br >< /br >
-          < button onClick={ viewMenu }>View Menu< /button >
+          < button className="side-button" onClick={ viewMenu }>View Menu< /button >
         < /div >
       < /div >
     )
