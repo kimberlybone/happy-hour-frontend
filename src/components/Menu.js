@@ -10,12 +10,13 @@ export default class Menu extends Component {
       const ingredientList = ingredients.map(ingredient => ingredient.name)
       return (
         < Fragment key={ id } >
-          < li className='menu-item'>{name} - ${price}</ li >
-          < p className='ingredients'>{ ingredientList.join(', ') }</ p >
+          < li className='menu-item'>{name} - ${price}< / li >
+          < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >
       )
     })
   }
+
 
 
   render() {
@@ -32,7 +33,7 @@ export default class Menu extends Component {
           {this.renderMenuItems()}
         < / div >
         < div className='menu-close' >
-          < button> Close < /button >
+          < button onClick={null}> Close < /button >
         < /div >
       < / div >
     )
