@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import '../SideBar.css';
 import User from '../components/User'
+import Favorite from '../components/Favorite'
 
 const URL = 'http://localhost:3000'
 
 export default class SideBar extends Component {
 
   state = {
-
+    user: null,
+    showFavorites: false
   }
 
   componentDidMount() {
@@ -18,19 +20,49 @@ export default class SideBar extends Component {
       }
     })
     .then(res => res.json())
-    .then(console.log)
+    .then( user => this.setState({user}))
   }
 
+  getFavorites = () => {
+    if(this.state.user){
+      const {favorites} = this.state.user
+      return favorites.map(favorite => {
+        return < Favorite recipe={favorite.recipe} key={favorite.id}/>
+      })
+    } else {
+      return null
+    }
+  }
+
+  handleFavorites = () => {
+    this.setState({
+      showFavorites: true
+    })
+  }
+
+
+
+
   render(){
-    const {user} = this.props
+    const {state: { user, showFavorites },
+           props:{ viewMenu }, handleFavorites, getFavorites} = this
 
     return (
       < div className="side-bar" >
-      {  /*< User user={user} />*/}
+        { user ? < User user={user} /> : null }
         < div >
-          < button onClick={ null }>Favorites< /button >
+        {
+          showFavorites ?
+          getFavorites()
+          :
+          < button onClick={ handleFavorites }>Favorites< /button >
+
+        }
           < br >< /br >
-          < button onClick={ null }>View Menu< /button >
+          {
+
+            < button onClick={ viewMenu }>View Menu< /button >
+          }
         < /div >
       < /div >
     )

@@ -1,6 +1,6 @@
 .side-bar {
   grid-area: side-bar;
-  background-color: blue;
+  background-color: white;
 }
 .user-div {
   padding-top: 100px;
