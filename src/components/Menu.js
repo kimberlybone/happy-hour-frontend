@@ -1,10 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 export default class Menu extends Component {
 
   renderMenuItems = () => {
-    return this.props.menuItems.map(item => {
-      return< li >{item.name}</ li >
+    const { menuItems } = this.props;
+    return menuItems.map(item => {
+      const { name, price, ingredients } = item;
+      const ingredientList = ingredients.map(ingredient => ingredient.name)
+      return (
+        < Fragment >
+          < li >{name} - ${price}</ li >
+          < p >{ ingredientList.join(', ') }</ p >
+        </ Fragment >
+      )
     })
   }
 
