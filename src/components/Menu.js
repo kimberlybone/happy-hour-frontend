@@ -5,12 +5,12 @@ export default class Menu extends Component {
   renderMenuItems = () => {
     const { menuItems } = this.props;
     return menuItems.map(item => {
-      const { name, price, ingredients } = item;
+      const { id, name, price, ingredients } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
       return (
-        < Fragment >
-          < li >{name} - ${price}</ li >
-          < p >{ ingredientList.join(', ') }</ p >
+        < Fragment key={ id } >
+          < li className='menu-item'>{name} - ${price}</ li >
+          < p className='ingredients'>{ ingredientList.join(', ') }</ p >
         </ Fragment >
       )
     })
@@ -19,7 +19,10 @@ export default class Menu extends Component {
   render() {
     return (
       < div id='menu' >
-        {this.renderMenuItems()}
+        < h1 >Happy Hour Menu</ h1 >
+        < ul className='menu-items'>
+          {this.renderMenuItems()}
+        </ ul >
       </ div >
     )
   }
