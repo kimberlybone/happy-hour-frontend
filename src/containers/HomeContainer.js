@@ -10,9 +10,11 @@ export default class HomeContainer extends Component {
   }
 
   handleViewMenu = () => {
+
     this.setState({
       viewMenu: true
     })
+    
   }
 
   render() {
