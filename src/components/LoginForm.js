@@ -14,7 +14,7 @@ export default class LoginForm extends Component {
     const { props: {isReturningUser, errors}, onFormChange, renderSignUpForm, formSubmit, renderErrors,
             state: {name, password}} = this;
     return (
-      < form onChange={ onFormChange } onSubmit={formSubmit}>
+      < form onChange={ onFormChange } onSubmit={formSubmit} className='login-form'>
       { errors ? renderErrors() : null }
       <div className='field'>
         <label className='label'>Name</label>
@@ -131,8 +131,8 @@ export default class LoginForm extends Component {
 
       < div className='form-div'>
         < h1 >Happy Hour< /h1 >
-        < NavLink to='/login' className="button is-primary is-light login-btn">Log In</ NavLink>
-        < NavLink to='/signup' className="button is-primary is-light login-btn">Sign Up< /NavLink >
+        < NavLink to='/login' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Log In< /NavLink>
+        < NavLink to='/signup' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Sign Up< /NavLink >
         { renderForm() }
       < /div >
     )
