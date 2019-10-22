@@ -75,13 +75,26 @@ export default class HomeContainer extends Component {
     .then(user => this.setState({user}))
   }
 
+  deleteFavorite = id => {
+    const { token } = this.props
+
+    const config = {
+      method: 'DELETE',
+      headers: {'Authorization': token}
+    }
+    fetch(URL + '/favorites/' + id, config)
+    .then(res => res.json())
+    .then(user => this.setState({user}))
+  }
+
   render() {
     const { props:{ loggedInUserId, token },
             state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
             handleCloseMenu,
             handleViewMenu,
-            handleAddFavorite } = this
+            handleAddFavorite,
+            deleteFavorite } = this
 
     return (
       <div className="home-container">
@@ -101,6 +114,7 @@ export default class HomeContainer extends Component {
             errors={ errors }
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
+            deleteFavorite={ deleteFavorite }
             />
       </div>
     )

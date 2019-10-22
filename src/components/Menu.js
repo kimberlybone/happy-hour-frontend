@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import Filter from './Filter'
 
-const URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
 
 export default class Menu extends Component {
 
+  findFavoriteId = (id) => {
+    const { props: {user, deleteFavorite} } = this;
+    let favorite = user.favorites.find(favorite => favorite.recipe.id === id)
+    return favorite.id
+  }
+
   renderMenuItems = () => {
-    const { props: {user, menuItems, handleAddFavorite} } = this;
+    const { props: {user, menuItems, handleAddFavorite, deleteFavorite}, findFavoriteId } = this;
     const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
 
     return menuItems.map(item => {
@@ -18,7 +24,7 @@ export default class Menu extends Component {
         < Fragment key={ id } >
           < ul className='menu-item'>
             {name} - ${price}
-            <span className={ className } onClick={ () => handleAddFavorite(id) }>
+            <span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
           </span>< / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
@@ -28,6 +34,7 @@ export default class Menu extends Component {
   }
 
   render() {
+    // console.log(this.findFavoriteId())
     const { props: {
               handleCloseMenu,
               categories,

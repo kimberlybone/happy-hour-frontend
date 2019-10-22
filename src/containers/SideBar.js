@@ -3,7 +3,7 @@ import '../SideBar.css';
 import User from '../components/User'
 import Favorite from '../components/Favorite'
 
-const URL = 'http://localhost:3000'
+// const URL = 'http://localhost:3000'
 
 export default class SideBar extends Component {
 
@@ -47,7 +47,6 @@ export default class SideBar extends Component {
     const { props: {
               viewMenu,
               user,
-              favorites,
               showFavorites,
               handleFavorites },
             getFavorites } = this

@@ -64,9 +64,9 @@ export default class MainContainer extends Component {
               user,
               handleCloseMenu,
               handleAddFavorite,
-              errors },
-            handleFilteredItems,
-            getCategories } = this
+              errors, deleteFavorite },
+              handleFilteredItems,
+              getCategories} = this
 
     return (
       <div className="main-container">
@@ -87,6 +87,7 @@ export default class MainContainer extends Component {
           categories={ getCategories() }
           handleCloseMenu={ handleCloseMenu }
           handleAddFavorite={ handleAddFavorite }
+          deleteFavorite={ deleteFavorite }
           />
         : null
       }
