@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,  } from 'react';
 import '../MainContainer.css';
 import Menu from '../components/Menu'
 // import image from '~/happy-hour-frontend/public/Assets/cartoon-counter.jpg'
@@ -11,6 +11,10 @@ export default class MainContainer extends Component {
     menuItems: [],
     filteredItems: []
   }
+
+  mainDiv1Ref = React.createRef();
+  mainDiv2Ref = React.createRef();
+
 
   // fetch recipes
   componentDidMount() {
@@ -47,22 +51,38 @@ export default class MainContainer extends Component {
     return categories.filter((item, index) => categories.indexOf(item) === index)
   }
 
-
+  blurDivs = shouldBlur => {
+    const { mainDiv1Ref, mainDiv2Ref } = this;
+    if (shouldBlur) {
+      mainDiv1Ref.current.style.filter = 'blur(8px)';
+      mainDiv2Ref.current.style.filter = 'blur(8px)';
+    } else {
+      mainDiv1Ref.current.style.filter = 'none';
+      mainDiv2Ref.current.style.filter = 'none';
+    }
+  }
 
   render(){
     const { state: { menuItems, filteredItems },
-            props: { loggedInUserId, updateBudget,
+            props: {
+              loggedInUserId,
+              updateBudget,
               user,
               handleCloseMenu,
               handleAddFavorite,
-              errors, deleteFavorite },
-              handleFilteredItems,
-              getCategories} = this
+              errors,
+              deleteFavorite
+            },
+            mainDiv1Ref,
+            mainDiv2Ref,
+            handleFilteredItems,
+            getCategories,
+            blurDivs } = this
 
     return (
       <div className="main-container">
-        <div className="main-div">< h1 style={{color: 'white', fontSize: 60 + 'px'}}> Happy Hour </ h1 ></div>
-        <div className="main-div2">
+        <div className="main-div" ref={ mainDiv1Ref }>< h1 style={{color: 'white', fontSize: 60 + 'px'}}> Happy Hour </ h1 ></div>
+        <div className="main-div2" ref={ mainDiv2Ref }>
           <div className="bar-counter">Bar Counter</div>
             <div className="bar-stools">Bar Stools</div>
         </div>
@@ -80,6 +100,7 @@ export default class MainContainer extends Component {
           handleAddFavorite={ handleAddFavorite }
           deleteFavorite={ deleteFavorite }
           updateBudget={updateBudget}
+          blurDivs={ blurDivs }
           />
         : null
       }

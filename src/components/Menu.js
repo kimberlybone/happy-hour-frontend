@@ -43,7 +43,13 @@ export default class Menu extends Component {
     })
   }
 
+  componentDidMount() {
+    this.props.blurDivs(true);
+  }
 
+  componentWillUnmount() {
+    this.props.blurDivs(false);
+  }
 
   render() {
     const { props: {
