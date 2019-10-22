@@ -14,6 +14,8 @@ export default class MainContainer extends Component {
 
   componentDidMount() {
     const { token } = this.props
+
+    // fetch recipes
     fetch(URL + '/recipes', {
       headers: {
         'Authorization': token
@@ -21,10 +23,23 @@ export default class MainContainer extends Component {
     })
     .then(res => res.json())
     .then(menuItems => {
-      // console.log(menuItems.slice(0,5));
       this.setState({menuItems})
     })
+
   }
+
+  // getFavorites = () => {
+  //   if(this.state.user){
+  //     const {favorites} = this.state.user
+  //     return favorites.map(favorite => {
+  //       return < Favorite recipe={favorite.recipe} key={favorite.id}/>
+  //     })
+  //   } else {
+  //     return null
+  //   }
+  // }
+
+
 
   handleFilteredItems = (category) => {
     const {menuItems} = this.state
@@ -44,7 +59,15 @@ export default class MainContainer extends Component {
   }
 
   render(){
-    const { state: { menuItems, filteredItems }, props:{handleCloseMenu}, handleFilteredItems, getCategories } = this
+    const { state: { menuItems, filteredItems },
+            props: { loggedInUserId,
+              user,
+              handleCloseMenu,
+              handleAddFavorite,
+              errors },
+            handleFilteredItems,
+            getCategories } = this
+
     return (
       <div className="main-container">
         <div className="main-div">< h1 style={{color: 'white', fontSize: 60 + 'px'}}> Happy Hour </ h1 ></div>
@@ -57,9 +80,13 @@ export default class MainContainer extends Component {
           ?
           < Menu
           menuItems={ filteredItems.length ? filteredItems : menuItems }
+          loggedInUserId={ loggedInUserId }
+          user={ user }
+          errors={ errors }
           handleFilteredItems={ handleFilteredItems }
           categories={ getCategories() }
           handleCloseMenu={ handleCloseMenu }
+          handleAddFavorite={ handleAddFavorite }
           />
         : null
       }

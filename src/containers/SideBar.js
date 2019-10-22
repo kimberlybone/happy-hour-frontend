@@ -7,25 +7,27 @@ const URL = 'http://localhost:3000'
 
 export default class SideBar extends Component {
 
-  state = {
-    user: null,
-    showFavorites: false
-  }
+  // state = {
+  //   user: null,
+  //   showFavorites: false
+  // }
 
-  componentDidMount() {
-    const { loggedInUserId, token } = this.props
-    fetch(URL + '/users/' + loggedInUserId, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => res.json())
-    .then( user => this.setState({user}))
-  }
+  // componentDidMount() {
+  //   const { loggedInUserId, token } = this.props
+  //   fetch(URL + '/users/' + loggedInUserId, {
+  //     headers: {
+  //       'Authorization': token
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then( user => this.setState({user}))
+  // }
 
   getFavorites = () => {
-    if(this.state.user){
-      const {favorites} = this.state.user
+    const { user } = this.props;
+    console.log(user);
+    if (user) {
+      const {favorites} = user;
       return favorites.map(favorite => {
         return < Favorite recipe={favorite.recipe} key={favorite.id}/>
       })
@@ -34,20 +36,21 @@ export default class SideBar extends Component {
     }
   }
 
-  handleFavorites = () => {
-    this.setState(prevState => {
-      return {showFavorites: !prevState.showFavorites }
-
-
-
-      
-    })
-  }
+  // handleFavorites = () => {
+  //   this.setState(prevState => {
+  //     return {showFavorites: !prevState.showFavorites }
+  //   })
+  // }
 
 
   render(){
-    const {state: { user, showFavorites },
-           props:{ viewMenu }, handleFavorites, handleOnClick, getFavorites} = this
+    const { props: {
+              viewMenu,
+              user,
+              favorites,
+              showFavorites,
+              handleFavorites },
+            getFavorites } = this
 
     return (
       < div className="side-bar" >
