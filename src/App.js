@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import LoginForm from './components/LoginForm'
 import HomeContainer from './containers/HomeContainer'
-import {Route, Switch, NavLink, withRouter} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css';
 
 const URL = 'http://localhost:3000'
-// const api = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
+
 
 class App extends Component {
 

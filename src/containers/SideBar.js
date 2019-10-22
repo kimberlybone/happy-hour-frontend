@@ -3,25 +3,9 @@ import '../SideBar.css';
 import User from '../components/User'
 import Favorite from '../components/Favorite'
 
-const URL = 'http://localhost:3000'
+// const URL = 'http://localhost:3000'
 
 export default class SideBar extends Component {
-
-  // state = {
-  //   user: null,
-  //   showFavorites: false
-  // }
-
-  // componentDidMount() {
-  //   const { loggedInUserId, token } = this.props
-  //   fetch(URL + '/users/' + loggedInUserId, {
-  //     headers: {
-  //       'Authorization': token
-  //     }
-  //   })
-  //   .then(res => res.json())
-  //   .then( user => this.setState({user}))
-  // }
 
   getFavorites = () => {
     const { user } = this.props;
@@ -36,18 +20,11 @@ export default class SideBar extends Component {
     }
   }
 
-  // handleFavorites = () => {
-  //   this.setState(prevState => {
-  //     return {showFavorites: !prevState.showFavorites }
-  //   })
-  // }
-
 
   render(){
     const { props: {
               viewMenu,
               user,
-              favorites,
               showFavorites,
               handleFavorites },
             getFavorites } = this

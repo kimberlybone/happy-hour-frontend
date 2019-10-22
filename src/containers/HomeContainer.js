@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar'
 import MainContainer from './MainContainer'
+import CreateDrink from './CreateDrink'
 import '../HomeContainer.css';
+import {Route, withRouter} from 'react-router-dom'
 
 const URL = 'http://localhost:3000';
 
@@ -14,11 +16,46 @@ export default class HomeContainer extends Component {
     errors: []
   }
 
+  updateBudget = (user, recipe) => {
+    const { loggedInUserId, token } = this.props
+    const newBudget = user.budget - recipe.price
+
+    if(newBudget >= 0){
+      const config = {
+        method: 'PATCH',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          budget: newBudget
+        })
+      }
+
+      fetch(URL + '/users/' + loggedInUserId, config)
+      .then(res => res.json())
+      .then(user => {
+        this.setState({user})
+      })
+      alert(`You just bought ${recipe.name} for $${recipe.price}!`)
+    } else {
+      this.setState({
+        errors: "You don't need any more drank. Get a job."
+      })
+      setTimeout(() => this.setState({errors: []}), 2500)
+    }
+  }
+
+
+
+
   handleViewMenu = () => {
     this.setState({
       viewMenu: true
     })
   }
+
 
   handleCloseMenu = () => {
     this.setState({
@@ -26,11 +63,13 @@ export default class HomeContainer extends Component {
     })
   }
 
+
   handleFavorites = () => {
     this.setState(prevState => {
       return {showFavorites: !prevState.showFavorites }
     })
   }
+
 
   handleAddFavorite = id => {
     const { loggedInUserId, token } = this.props;
@@ -62,10 +101,11 @@ export default class HomeContainer extends Component {
     })
   }
 
+
+  // FETCH USER INFO
   componentDidMount() {
     const { loggedInUserId, token } = this.props
 
-    // fetch user info
     fetch(URL + '/users/' + loggedInUserId, {
       headers: {
         'Authorization': token
@@ -75,13 +115,27 @@ export default class HomeContainer extends Component {
     .then(user => this.setState({user}))
   }
 
+  deleteFavorite = id => {
+    const { token } = this.props
+
+    const config = {
+      method: 'DELETE',
+      headers: {'Authorization': token}
+    }
+    fetch(URL + '/favorites/' + id, config)
+    .then(res => res.json())
+    .then(user => this.setState({user}))
+  }
+
   render() {
     const { props:{ loggedInUserId, token },
             state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
+            updateBudget,
             handleCloseMenu,
             handleViewMenu,
-            handleAddFavorite } = this
+            handleAddFavorite,
+            deleteFavorite } = this
 
     return (
       <div className="home-container">
@@ -101,7 +155,14 @@ export default class HomeContainer extends Component {
             errors={ errors }
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
+            deleteFavorite={ deleteFavorite }
+            updateBudget={updateBudget}
             />
+          <Route exact
+            path= '/create-drink'
+            render={(props) =>
+              < CreateDrink {...props}/>}
+             />
       </div>
     )
   }
