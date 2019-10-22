@@ -16,7 +16,7 @@ export default class Menu extends Component {
     const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
 
     return menuItems.map(item => {
-      const { id, name, price, ingredients } = item;
+      const { id, name, price, ingredients, user_name } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
       const className = favRecipeIds.includes(id) ? 'heart favorite' : 'heart non-favorite'
 
@@ -26,7 +26,9 @@ export default class Menu extends Component {
             {name} - ${price}
             <span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
-          </span>< / ul >
+          </span>
+          <p style={{fontSize: 8}}>Made By: {user_name}</p>
+          < / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >
       )
