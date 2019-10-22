@@ -92,3 +92,11 @@ div.menu-close {
   float: right;
   position: absolute;
 }
+
+.heart {
+  cursor: pointer;
+}
+
+.favorite {
+  color: red;
+}

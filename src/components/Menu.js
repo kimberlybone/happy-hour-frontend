@@ -8,14 +8,17 @@ export default class Menu extends Component {
   renderMenuItems = () => {
     const { props: {user, menuItems, handleAddFavorite} } = this;
     const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
+
     return menuItems.map(item => {
       const { id, name, price, ingredients } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
+      const className = favRecipeIds.includes(id) ? 'heart favorite' : 'heart non-favorite'
+
       return (
         < Fragment key={ id } >
           < ul className='menu-item'>
             {name} - ${price}
-            <span onClick={ () => handleAddFavorite(id) }>
+            <span className={ className } onClick={ () => handleAddFavorite(id) }>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
           </span>< / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
