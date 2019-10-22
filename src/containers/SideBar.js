@@ -23,16 +23,16 @@ export default class SideBar extends Component {
   //   .then( user => this.setState({user}))
   // }
 
-  getFavorites = () => {
-    if(this.state.user){
-      const {favorites} = this.state.user
-      return favorites.map(favorite => {
-        return < Favorite recipe={favorite.recipe} key={favorite.id}/>
-      })
-    } else {
-      return null
-    }
-  }
+  // getFavorites = () => {
+  //   if(this.state.user){
+  //     const {favorites} = this.state.user
+  //     return favorites.map(favorite => {
+  //       return < Favorite recipe={favorite.recipe} key={favorite.id}/>
+  //     })
+  //   } else {
+  //     return null
+  //   }
+  // }
 
   handleFavorites = () => {
     this.setState(prevState => {

@@ -38,15 +38,15 @@ export default class MainContainer extends Component {
     .then( user => this.setState({user}))
   }
 
-  componentDidMount() {
-    const { loggedInUserId, token } = this.props
-    fetch(URL + '/users/' + loggedInUserId, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => res.json())
-    .then( user => this.setState({user}))
+  getFavorites = () => {
+    if(this.state.user){
+      const {favorites} = this.state.user
+      return favorites.map(favorite => {
+        return < Favorite recipe={favorite.recipe} key={favorite.id}/>
+      })
+    } else {
+      return null
+    }
   }
 
   handleFilteredItems = (category) => {
