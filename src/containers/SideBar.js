@@ -12,16 +12,16 @@ export default class SideBar extends Component {
   //   showFavorites: false
   // }
 
-  componentDidMount() {
-    const { loggedInUserId, token } = this.props
-    fetch(URL + '/users/' + loggedInUserId, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => res.json())
-    .then( user => this.setState({user}))
-  }
+  // componentDidMount() {
+  //   const { loggedInUserId, token } = this.props
+  //   fetch(URL + '/users/' + loggedInUserId, {
+  //     headers: {
+  //       'Authorization': token
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then( user => this.setState({user}))
+  // }
 
   getFavorites = () => {
     if(this.state.user){

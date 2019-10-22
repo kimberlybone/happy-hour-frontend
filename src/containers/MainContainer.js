@@ -15,7 +15,9 @@ export default class MainContainer extends Component {
   }
 
   componentDidMount() {
-    const { token } = this.props
+    const { loggedInUserId, token } = this.props
+
+    // fetch recipes
     fetch(URL + '/recipes', {
       headers: {
         'Authorization': token
@@ -23,9 +25,28 @@ export default class MainContainer extends Component {
     })
     .then(res => res.json())
     .then(menuItems => {
-      // console.log(menuItems.slice(0,5));
       this.setState({menuItems})
     })
+
+    // fetch user info
+    fetch(URL + '/users/' + loggedInUserId, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then( user => this.setState({user}))
+  }
+
+  componentDidMount() {
+    const { loggedInUserId, token } = this.props
+    fetch(URL + '/users/' + loggedInUserId, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then( user => this.setState({user}))
   }
 
   handleFilteredItems = (category) => {
