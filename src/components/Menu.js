@@ -6,13 +6,18 @@ const URL = 'http://localhost:3000';
 export default class Menu extends Component {
 
   renderMenuItems = () => {
-    const { props: {menuItems, handleAddFavorite} } = this;
+    const { props: {user, menuItems, handleAddFavorite} } = this;
+    const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
     return menuItems.map(item => {
       const { id, name, price, ingredients } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
       return (
         < Fragment key={ id } >
-          < ul className='menu-item'>{name} - ${price}<span onClick={ () => handleAddFavorite(id) }>♥</span>< / ul >
+          < ul className='menu-item'>
+            {name} - ${price}
+            <span onClick={ () => handleAddFavorite(id) }>
+              { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
+          </span>< / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >
       )
@@ -20,7 +25,10 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { props: { handleCloseMenu, categories, handleFilteredItems }, renderMenuItems} = this
+    const { props: {
+              handleCloseMenu,
+              categories,
+              handleFilteredItems }, renderMenuItems} = this
     return (
       < div id='menu' >
       < div className='header-div' >

@@ -85,6 +85,7 @@ export default class HomeContainer extends Component {
             viewMenu={ viewMenu }
             loggedInUserId={ loggedInUserId }
             token={ token }
+            user={ user }
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
             />

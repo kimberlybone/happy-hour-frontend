@@ -60,7 +60,10 @@ export default class MainContainer extends Component {
 
   render(){
     const { state: { menuItems, filteredItems },
-            props: { loggedInUserId, handleCloseMenu, handleAddFavorite },
+            props: { loggedInUserId,
+              user,
+              handleCloseMenu,
+              handleAddFavorite },
             handleFilteredItems,
             getCategories } = this
 
@@ -77,6 +80,7 @@ export default class MainContainer extends Component {
           < Menu
           menuItems={ filteredItems.length ? filteredItems : menuItems }
           loggedInUserId={ loggedInUserId }
+          user={ user }
           handleFilteredItems={ handleFilteredItems }
           categories={ getCategories() }
           handleCloseMenu={ handleCloseMenu }
