@@ -9,7 +9,9 @@ export default class MainContainer extends Component {
 
   state = {
     menuItems: [],
-    filteredItems: []
+    filteredItems: [],
+    user: null,
+    showFavorites: false
   }
 
   componentDidMount() {

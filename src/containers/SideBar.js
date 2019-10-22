@@ -7,10 +7,10 @@ const URL = 'http://localhost:3000'
 
 export default class SideBar extends Component {
 
-  state = {
-    user: null,
-    showFavorites: false
-  }
+  // state = {
+  //   user: null,
+  //   showFavorites: false
+  // }
 
   componentDidMount() {
     const { loggedInUserId, token } = this.props
@@ -37,10 +37,6 @@ export default class SideBar extends Component {
   handleFavorites = () => {
     this.setState(prevState => {
       return {showFavorites: !prevState.showFavorites }
-
-
-
-      
     })
   }
 
