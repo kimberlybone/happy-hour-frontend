@@ -1,23 +1,42 @@
 import React, { Component, Fragment } from 'react';
 import Filter from './Filter'
 
+const URL = 'http://localhost:3000';
+
 export default class Menu extends Component {
 
   renderMenuItems = () => {
-    const { menuItems } = this.props;
+    const { props: {menuItems}, handleAddFavorite } = this;
     return menuItems.map(item => {
       const { id, name, price, ingredients } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
       return (
         < Fragment key={ id } >
-          < ul className='menu-item'>{name} - ${price}< / ul >
+          < ul className='menu-item'>{name} - ${price}<span onClick={ () => handleAddFavorite(id) }>♥</span>< / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >
       )
     })
   }
 
-
+  handleAddFavorite = id => {
+    const { loggedInUserId, token } = this.props;
+    const config = {
+      method: 'POST',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        'recipe_id': id,
+        'user_id': loggedInUserId
+      })
+    }
+    fetch(URL + '/favorites', config)
+    .then(res => res.json())
+    .then(console.log)
+  }
 
   render() {
     const { props: { handleCloseMenu, categories, handleFilteredItems }, renderMenuItems} = this
