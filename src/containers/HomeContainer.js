@@ -18,23 +18,34 @@ export default class HomeContainer extends Component {
     const { loggedInUserId, token } = this.props
     const newBudget = user.budget - recipe.price
 
-    const config = {
-      method: 'PATCH',
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        budget: newBudget
+    if(newBudget >= 0){
+      const config = {
+        method: 'PATCH',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          budget: newBudget
+        })
+      }
+
+      fetch(URL + '/users/' + loggedInUserId, config)
+      .then(res => res.json())
+      .then(user => {
+        this.setState({user})
       })
+      alert(`You just bought ${recipe.name} for $${recipe.price}!`)
+    } else {
+      this.setState({
+        errors: "You don't need any more drank. Get a job."
+      })
+      setTimeout(() => this.setState({errors: []}), 2500)
     }
-    fetch(URL + '/users/' + loggedInUserId, config)
-    .then(res => res.json())
-    .then(user => {
-      this.setState({user})
-    })
   }
+
+
 
 
   handleViewMenu = () => {
