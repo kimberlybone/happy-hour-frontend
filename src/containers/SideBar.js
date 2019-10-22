@@ -25,6 +25,7 @@ export default class SideBar extends Component {
 
   getFavorites = () => {
     const { user } = this.props;
+    console.log(user);
     if (user) {
       const {favorites} = user;
       return favorites.map(favorite => {

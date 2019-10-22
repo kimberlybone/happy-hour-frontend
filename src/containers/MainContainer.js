@@ -60,8 +60,10 @@ export default class MainContainer extends Component {
 
   render(){
     const { state: { menuItems, filteredItems },
-            props: { loggedInUserId, handleCloseMenu }, handleFilteredItems,
+            props: { loggedInUserId, handleCloseMenu, handleAddFavorite },
+            handleFilteredItems,
             getCategories } = this
+
     return (
       <div className="main-container">
         <div className="main-div">< h1 style={{color: 'white', fontSize: 60 + 'px'}}> Happy Hour </ h1 ></div>
@@ -78,6 +80,7 @@ export default class MainContainer extends Component {
           handleFilteredItems={ handleFilteredItems }
           categories={ getCategories() }
           handleCloseMenu={ handleCloseMenu }
+          handleAddFavorite={ handleAddFavorite }
           />
         : null
       }

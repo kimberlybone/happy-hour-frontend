@@ -6,7 +6,7 @@ const URL = 'http://localhost:3000';
 export default class Menu extends Component {
 
   renderMenuItems = () => {
-    const { props: {menuItems}, handleAddFavorite } = this;
+    const { props: {menuItems, handleAddFavorite} } = this;
     return menuItems.map(item => {
       const { id, name, price, ingredients } = item;
       const ingredientList = ingredients.map(ingredient => ingredient.name)
@@ -17,25 +17,6 @@ export default class Menu extends Component {
         < / Fragment >
       )
     })
-  }
-
-  handleAddFavorite = id => {
-    const { loggedInUserId, token } = this.props;
-    const config = {
-      method: 'POST',
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        'recipe_id': id,
-        'user_id': loggedInUserId
-      })
-    }
-    fetch(URL + '/favorites', config)
-    .then(res => res.json())
-    .then(console.log)
   }
 
   render() {
