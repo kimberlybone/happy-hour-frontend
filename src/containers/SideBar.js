@@ -7,22 +7,6 @@ import Favorite from '../components/Favorite'
 
 export default class SideBar extends Component {
 
-  // state = {
-  //   user: null,
-  //   showFavorites: false
-  // }
-
-  // componentDidMount() {
-  //   const { loggedInUserId, token } = this.props
-  //   fetch(URL + '/users/' + loggedInUserId, {
-  //     headers: {
-  //       'Authorization': token
-  //     }
-  //   })
-  //   .then(res => res.json())
-  //   .then( user => this.setState({user}))
-  // }
-
   getFavorites = () => {
     const { user } = this.props;
     console.log(user);
@@ -35,12 +19,6 @@ export default class SideBar extends Component {
       return null
     }
   }
-
-  // handleFavorites = () => {
-  //   this.setState(prevState => {
-  //     return {showFavorites: !prevState.showFavorites }
-  //   })
-  // }
 
 
   render(){

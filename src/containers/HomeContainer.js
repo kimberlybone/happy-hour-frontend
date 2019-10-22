@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar'
 import MainContainer from './MainContainer'
+import CreateDrink from './CreateDrink'
 import '../HomeContainer.css';
+import {Route, withRouter} from 'react-router-dom'
 
 const URL = 'http://localhost:3000';
 
@@ -156,6 +158,11 @@ export default class HomeContainer extends Component {
             deleteFavorite={ deleteFavorite }
             updateBudget={updateBudget}
             />
+          <Route exact
+            path= '/create-drink'
+            render={(props) =>
+              < CreateDrink {...props}/>}
+             />
       </div>
     )
   }

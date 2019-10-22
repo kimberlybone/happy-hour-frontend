@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import Filter from './Filter'
+import {NavLink} from 'react-router-dom'
 
 // const URL = 'http://localhost:3000';
 
 export default class Menu extends Component {
 
   findFavoriteId = (id) => {
-    const { props: {user, deleteFavorite} } = this;
+    const { props: { user } } = this;
     let favorite = user.favorites.find(favorite => favorite.recipe.id === id)
     return favorite.id
   }
+
 
   renderMenuItems = () => {
     const { props: {user,
@@ -29,17 +31,19 @@ export default class Menu extends Component {
       return (
         < Fragment key={ id } >
           < ul className='menu-item'>
-            <span className='item-name' onClick={() => updateBudget(user, item)}>{name} </span> - ${price}
-            <span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
+            < span className='item-name' onClick={() => updateBudget(user, item)}>{name} < /span> - ${price}
+            < span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
-          </span>
-          <p style={{fontSize: 8}}>Made By: {user_name}</p>
+          < /span>
+          < p style={{fontSize: 8}}>Made By: {user_name}< /p>
           < / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >
       )
     })
   }
+
+
 
   render() {
     const { props: {
@@ -59,13 +63,14 @@ export default class Menu extends Component {
         categories={ categories }
         handleFilteredItems={ handleFilteredItems }
         />
-        { errors.length ? < p className='error' >{ errors }</ p > : null }
+        { errors.length ? < p className='error' >{ errors }< / p > : null }
       < /div>
         < div className='menu-items'>
           { renderMenuItems() }
         < / div >
         < div className='menu-close' >
           < button className="side-button" onClick={ handleCloseMenu }> Close < /button >
+          < NavLink to='/create-drink' className='side-button' onClick={null}> Create Your Own Drink < /NavLink>
         < /div >
       < / div >
     )
