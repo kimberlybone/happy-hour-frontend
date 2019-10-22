@@ -1,6 +1,8 @@
-import React, { Component,  } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../MainContainer.css';
 import Menu from '../components/Menu'
+import BarSpot from '../components/BarSpot'
+
 // import image from '~/happy-hour-frontend/public/Assets/cartoon-counter.jpg'
 
 const URL = 'http://localhost:3000';
@@ -62,6 +64,18 @@ export default class MainContainer extends Component {
     }
   }
 
+  renderBarSpots = () => {
+    return (
+      < Fragment >
+        < BarSpot spotId='bs1' />
+        < BarSpot spotId='bs2' />
+        < BarSpot spotId='bs3' />
+        < BarSpot spotId='bs4' />
+        < BarSpot spotId='bs5' />
+      < / Fragment >
+    )
+  }
+
   render(){
     const { state: { menuItems, filteredItems },
             props: {
@@ -77,14 +91,23 @@ export default class MainContainer extends Component {
             mainDiv2Ref,
             handleFilteredItems,
             getCategories,
-            blurDivs } = this
+            blurDivs,
+            renderBarSpots } = this
 
     return (
       <div className="main-container">
-        <div className="main-div" ref={ mainDiv1Ref }>< h1 style={{color: 'white', fontSize: 60 + 'px'}}> Happy Hour </ h1 ></div>
-        <div className="main-div2" ref={ mainDiv2Ref }>
-          <div className="bar-counter">Bar Counter</div>
-            <div className="bar-stools">Bar Stools</div>
+        < div className="main-div" ref={ mainDiv1Ref }>
+          < h1 style={{color: 'white', fontSize: 60 + 'px'}} >
+            Happy Hour
+          < / h1 >
+        < / div>
+        < div className="main-div2" ref={ mainDiv2Ref }>
+          < div className="bar-counter">
+            Bar Counter
+          < / div >
+          < div className="bar-stools" >
+            { renderBarSpots }
+          < / div >
         </div>
         {
           this.props.viewMenu

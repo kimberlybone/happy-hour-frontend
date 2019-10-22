@@ -37,6 +37,9 @@
   background-size: cover;
 }
 .bar-stools {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-areas: 'bs1 bs2 bs3 bs4 bs5';
   background-color: tan;
 }
 
