@@ -34,11 +34,11 @@ export default class SideBar extends Component {
   //   }
   // }
 
-  handleFavorites = () => {
-    this.setState(prevState => {
-      return {showFavorites: !prevState.showFavorites }
-    })
-  }
+  // handleFavorites = () => {
+  //   this.setState(prevState => {
+  //     return {showFavorites: !prevState.showFavorites }
+  //   })
+  // }
 
 
   render(){

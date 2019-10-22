@@ -49,6 +49,12 @@ export default class MainContainer extends Component {
     }
   }
 
+  handleFavorites = () => {
+    this.setState(prevState => {
+      return {showFavorites: !prevState.showFavorites }
+    })
+  }
+
   handleFilteredItems = (category) => {
     const {menuItems} = this.state
     if(category !== 'All'){
