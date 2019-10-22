@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './components/LoginForm'
 import HomeContainer from './containers/HomeContainer'
+import CreateDrink from './containers/CreateDrink'
 import {Route, withRouter} from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css';
@@ -98,12 +99,17 @@ class App extends Component {
             onSubmitLogIn={ onSubmitLogIn }
             onSubmitSignUp={ onSubmitSignUp }/>}
            />
-           <Route exact
-             path='/'
-             render={ () => < HomeContainer
-               loggedInUserId={ loggedInUserId }
-               token={ token }/> }
-             />
+        <Route exact
+          path='/'
+          render={ () => < HomeContainer
+            loggedInUserId={ loggedInUserId }
+            token={ token }/> }
+           />
+        <Route exact
+          path= '/create-drink'
+          render={(props) =>
+            < CreateDrink {...props}/>}
+         />
       </div>
     );
   };

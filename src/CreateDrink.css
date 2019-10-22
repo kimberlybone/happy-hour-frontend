@@ -1,0 +1,15 @@
+.create-div {
+  /* height: 100vh;
+  width: 100vw; */
+  background-color: black;
+}
+.recipe-card {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  z-index: 100;
+  background-color: cyan;
+  border-radius: 4px;
+}

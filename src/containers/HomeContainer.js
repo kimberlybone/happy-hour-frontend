@@ -158,11 +158,6 @@ export default class HomeContainer extends Component {
             deleteFavorite={ deleteFavorite }
             updateBudget={updateBudget}
             />
-          <Route exact
-            path= '/create-drink'
-            render={(props) =>
-              < CreateDrink {...props}/>}
-             />
       </div>
     )
   }
