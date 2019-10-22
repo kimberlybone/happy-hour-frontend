@@ -9,13 +9,11 @@ export default class MainContainer extends Component {
 
   state = {
     menuItems: [],
-    filteredItems: [],
-    user: null,
-    showFavorites: false
+    filteredItems: []
   }
 
   componentDidMount() {
-    const { loggedInUserId, token } = this.props
+    const { token } = this.props
 
     // fetch recipes
     fetch(URL + '/recipes', {
@@ -28,32 +26,20 @@ export default class MainContainer extends Component {
       this.setState({menuItems})
     })
 
-    // fetch user info
-    fetch(URL + '/users/' + loggedInUserId, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => res.json())
-    .then( user => this.setState({user}))
   }
 
-  getFavorites = () => {
-    if(this.state.user){
-      const {favorites} = this.state.user
-      return favorites.map(favorite => {
-        return < Favorite recipe={favorite.recipe} key={favorite.id}/>
-      })
-    } else {
-      return null
-    }
-  }
+  // getFavorites = () => {
+  //   if(this.state.user){
+  //     const {favorites} = this.state.user
+  //     return favorites.map(favorite => {
+  //       return < Favorite recipe={favorite.recipe} key={favorite.id}/>
+  //     })
+  //   } else {
+  //     return null
+  //   }
+  // }
 
-  handleFavorites = () => {
-    this.setState(prevState => {
-      return {showFavorites: !prevState.showFavorites }
-    })
-  }
+
 
   handleFilteredItems = (category) => {
     const {menuItems} = this.state
