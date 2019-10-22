@@ -31,7 +31,8 @@ export default class Menu extends Component {
     const { props: {
               handleCloseMenu,
               categories,
-              handleFilteredItems }, renderMenuItems} = this
+              handleFilteredItems,
+              errors}, renderMenuItems} = this
     return (
       < div id='menu' >
       < div className='header-div' >
@@ -44,6 +45,7 @@ export default class Menu extends Component {
         categories={ categories }
         handleFilteredItems={ handleFilteredItems }
         />
+        { errors.length ? < p className='error' >{ errors }</ p > : null }
       < /div>
         < div className='menu-items'>
           { renderMenuItems() }

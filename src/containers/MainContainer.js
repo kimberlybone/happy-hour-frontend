@@ -63,7 +63,8 @@ export default class MainContainer extends Component {
             props: { loggedInUserId,
               user,
               handleCloseMenu,
-              handleAddFavorite },
+              handleAddFavorite,
+              errors },
             handleFilteredItems,
             getCategories } = this
 
@@ -81,6 +82,7 @@ export default class MainContainer extends Component {
           menuItems={ filteredItems.length ? filteredItems : menuItems }
           loggedInUserId={ loggedInUserId }
           user={ user }
+          errors={ errors }
           handleFilteredItems={ handleFilteredItems }
           categories={ getCategories() }
           handleCloseMenu={ handleCloseMenu }

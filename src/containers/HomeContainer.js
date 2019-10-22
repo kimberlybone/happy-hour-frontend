@@ -10,7 +10,8 @@ export default class HomeContainer extends Component {
   state = {
     viewMenu: false,
     user: null,
-    showFavorites: false
+    showFavorites: false,
+    errors: []
   }
 
   handleViewMenu = () => {
@@ -47,7 +48,18 @@ export default class HomeContainer extends Component {
     }
     fetch(URL + '/favorites', config)
     .then(res => res.json())
-    .then(user => this.setState({user}))
+    .then(response => {
+      console.log(response);
+      if (response.errors) {
+        console.log(response.errors);
+        this.setState({errors: response.errors})
+        setTimeout(() => this.setState({errors: []}), 2500)
+      } else {
+        this.setState({
+          user: response,
+        })
+      }
+    })
   }
 
   componentDidMount() {
@@ -60,12 +72,12 @@ export default class HomeContainer extends Component {
       }
     })
     .then(res => res.json())
-    .then( user => this.setState({user}))
+    .then(user => this.setState({user}))
   }
 
   render() {
     const { props:{ loggedInUserId, token },
-            state:{ viewMenu, user, showFavorites },
+            state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
             handleCloseMenu,
             handleViewMenu,
@@ -86,6 +98,7 @@ export default class HomeContainer extends Component {
             loggedInUserId={ loggedInUserId }
             token={ token }
             user={ user }
+            errors={ errors }
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
             />
