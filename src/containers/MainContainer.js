@@ -12,10 +12,10 @@ export default class MainContainer extends Component {
     filteredItems: []
   }
 
+  // fetch recipes
   componentDidMount() {
     const { token } = this.props
 
-    // fetch recipes
     fetch(URL + '/recipes', {
       headers: {
         'Authorization': token
@@ -27,18 +27,6 @@ export default class MainContainer extends Component {
     })
 
   }
-
-  // getFavorites = () => {
-  //   if(this.state.user){
-  //     const {favorites} = this.state.user
-  //     return favorites.map(favorite => {
-  //       return < Favorite recipe={favorite.recipe} key={favorite.id}/>
-  //     })
-  //   } else {
-  //     return null
-  //   }
-  // }
-
 
 
   handleFilteredItems = (category) => {
@@ -52,15 +40,18 @@ export default class MainContainer extends Component {
     }
   }
 
+
   getCategories = () => {
     const {menuItems} = this.state
     const categories = menuItems.map(item => item.category)
     return categories.filter((item, index) => categories.indexOf(item) === index)
   }
 
+
+
   render(){
     const { state: { menuItems, filteredItems },
-            props: { loggedInUserId,
+            props: { loggedInUserId, updateBudget,
               user,
               handleCloseMenu,
               handleAddFavorite,
@@ -88,6 +79,7 @@ export default class MainContainer extends Component {
           handleCloseMenu={ handleCloseMenu }
           handleAddFavorite={ handleAddFavorite }
           deleteFavorite={ deleteFavorite }
+          updateBudget={updateBudget}
           />
         : null
       }

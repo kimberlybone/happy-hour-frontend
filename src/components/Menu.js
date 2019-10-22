@@ -12,7 +12,13 @@ export default class Menu extends Component {
   }
 
   renderMenuItems = () => {
-    const { props: {user, menuItems, handleAddFavorite, deleteFavorite}, findFavoriteId } = this;
+    const { props: {user,
+                    menuItems,
+                    handleAddFavorite,
+                    updateBudget,
+                    deleteFavorite},
+                    findFavoriteId } = this;
+
     const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
 
     return menuItems.map(item => {
@@ -23,7 +29,7 @@ export default class Menu extends Component {
       return (
         < Fragment key={ id } >
           < ul className='menu-item'>
-            {name} - ${price}
+            <span className='item-name' onClick={() => updateBudget(user, item)}>{name} </span> - ${price}
             <span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
           </span>
@@ -36,12 +42,12 @@ export default class Menu extends Component {
   }
 
   render() {
-    // console.log(this.findFavoriteId())
     const { props: {
               handleCloseMenu,
               categories,
               handleFilteredItems,
               errors}, renderMenuItems} = this
+
     return (
       < div id='menu' >
       < div className='header-div' >
@@ -49,7 +55,6 @@ export default class Menu extends Component {
           < img src="https://media.giphy.com/media/1wmcMq0R4aYpRpqvkL/giphy.gif" alt="gif" className='menu-gif'>
           < /img >
         < / h1 >
-        {/*< img src="https://media.giphy.com/media/1wmcMq0R4aYpRpqvkL/giphy.gif" alt="gif" className='menu-gif'>< /img >*/}
         < Filter
         categories={ categories }
         handleFilteredItems={ handleFilteredItems }

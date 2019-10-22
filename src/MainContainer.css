@@ -104,3 +104,9 @@ div.menu-close {
 .error {
   color: red;
 }
+.item-name {
+  cursor: pointer;
+}
+.item-name:hover {
+  color: green;
+}

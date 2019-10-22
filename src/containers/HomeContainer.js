@@ -14,11 +14,35 @@ export default class HomeContainer extends Component {
     errors: []
   }
 
+  updateBudget = (user, recipe) => {
+    const { loggedInUserId, token } = this.props
+    const newBudget = user.budget - recipe.price
+
+    const config = {
+      method: 'PATCH',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        budget: newBudget
+      })
+    }
+    fetch(URL + '/users/' + loggedInUserId, config)
+    .then(res => res.json())
+    .then(user => {
+      this.setState({user})
+    })
+  }
+
+
   handleViewMenu = () => {
     this.setState({
       viewMenu: true
     })
   }
+
 
   handleCloseMenu = () => {
     this.setState({
@@ -26,11 +50,13 @@ export default class HomeContainer extends Component {
     })
   }
 
+
   handleFavorites = () => {
     this.setState(prevState => {
       return {showFavorites: !prevState.showFavorites }
     })
   }
+
 
   handleAddFavorite = id => {
     const { loggedInUserId, token } = this.props;
@@ -62,10 +88,11 @@ export default class HomeContainer extends Component {
     })
   }
 
+
+  // FETCH USER INFO
   componentDidMount() {
     const { loggedInUserId, token } = this.props
 
-    // fetch user info
     fetch(URL + '/users/' + loggedInUserId, {
       headers: {
         'Authorization': token
@@ -91,6 +118,7 @@ export default class HomeContainer extends Component {
     const { props:{ loggedInUserId, token },
             state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
+            updateBudget,
             handleCloseMenu,
             handleViewMenu,
             handleAddFavorite,
@@ -115,6 +143,7 @@ export default class HomeContainer extends Component {
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
             deleteFavorite={ deleteFavorite }
+            updateBudget={updateBudget}
             />
       </div>
     )
