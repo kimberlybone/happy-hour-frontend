@@ -43,20 +43,29 @@ export default class Menu extends Component {
     })
   }
 
+  handleCloseMenu = () => {
+    const { blurDivs, handleCloseMenu } = this.props
+
+    blurDivs(false);
+    handleCloseMenu();
+  }
+
   componentDidMount() {
     this.props.blurDivs(true);
   }
 
-  componentWillUnmount() {
-    this.props.blurDivs(false);
-  }
+  // componentWillUnmount() {
+  //   this.props.blurDivs(false);
+  // }
 
   render() {
     const { props: {
-              handleCloseMenu,
               categories,
               handleFilteredItems,
-              errors}, renderMenuItems} = this
+              errors
+            },
+            renderMenuItems,
+            handleCloseMenu } = this
 
     return (
       < div id='menu' >

@@ -1,7 +1,7 @@
 .create-div {
-  /* height: 100vh;
-  width: 100vw; */
-  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./Assets/bar-background.jpg');
 }
 .recipe-card {
   width: 50%;
