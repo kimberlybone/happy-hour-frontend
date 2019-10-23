@@ -84,8 +84,8 @@ export default class Menu extends Component {
           { renderMenuItems() }
         < / div >
         < div className='menu-close' >
-          < button className="side-button" onClick={ handleCloseMenu }> Close < /button >
-          < NavLink to='/create-drink' className='side-button' onClick={null}> Create Your Own Drink < /NavLink>
+          < button className="button is-primary is-light side-button" onClick={ handleCloseMenu }> Close < /button >
+          < NavLink to='/create-drink' className='button is-primary is-light side-button' onClick={null}> Create Your Own Drink < /NavLink>
         < /div >
       < / div >
     )
