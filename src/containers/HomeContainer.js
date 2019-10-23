@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar'
 import MainContainer from './MainContainer'
+import CreateDrink from './CreateDrink'
 import '../stylesheets/HomeContainer.css';
 import {Route, withRouter} from 'react-router-dom'
 
@@ -15,35 +16,10 @@ export default class HomeContainer extends Component {
     errors: []
   }
 
-
-  // FETCH USER INFO
-  componentDidMount() {
-    const { loggedInUserId, token } = this.props
-    fetch(URL + '/users/' + loggedInUserId, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(res => res.json())
-    .then(user => this.setState({user}))
-  }
-
-
-  deleteFavorite = id => {
-    const { token } = this.props
-    const config = {
-      method: 'DELETE',
-      headers: {'Authorization': token}
-    }
-    fetch(URL + '/favorites/' + id, config)
-    .then(res => res.json())
-    .then(user => this.setState({user}))
-  }
-
-
   updateBudget = (user, recipe) => {
     const { loggedInUserId, token } = this.props
     const newBudget = user.budget - recipe.price
+
     if(newBudget >= 0){
       const config = {
         method: 'PATCH',
@@ -56,6 +32,7 @@ export default class HomeContainer extends Component {
           budget: newBudget
         })
       }
+
       fetch(URL + '/users/' + loggedInUserId, config)
       .then(res => res.json())
       .then(user => {
@@ -72,7 +49,7 @@ export default class HomeContainer extends Component {
 
 
 
-// HANDLERS
+
   handleViewMenu = () => {
     this.setState({
       viewMenu: true
@@ -125,6 +102,30 @@ export default class HomeContainer extends Component {
   }
 
 
+  // FETCH USER INFO
+  componentDidMount() {
+    const { loggedInUserId, token } = this.props
+
+    fetch(URL + '/users/' + loggedInUserId, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(res => res.json())
+    .then(user => this.setState({user}))
+  }
+
+  deleteFavorite = id => {
+    const { token } = this.props
+
+    const config = {
+      method: 'DELETE',
+      headers: {'Authorization': token}
+    }
+    fetch(URL + '/favorites/' + id, config)
+    .then(res => res.json())
+    .then(user => this.setState({user}))
+  }
 
   render() {
     const { props:{ loggedInUserId, token },
