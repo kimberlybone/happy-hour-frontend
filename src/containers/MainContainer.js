@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import '../MainContainer.css';
+import '../stylesheets/MainContainer.css';
 import Menu from '../components/Menu'
 import BarSpot from '../components/BarSpot'
 
@@ -18,7 +18,7 @@ export default class MainContainer extends Component {
   mainDiv2Ref = React.createRef();
 
 
-  // fetch recipes
+// FETCH RECIPES
   componentDidMount() {
     const { token } = this.props
 
@@ -58,6 +58,8 @@ export default class MainContainer extends Component {
     if (shouldBlur) {
       mainDiv1Ref.current.style.filter = 'blur(8px)';
       mainDiv2Ref.current.style.filter = 'blur(8px)';
+      mainDiv1Ref.current.style.transitionDuration = 0.8 + 's'
+      mainDiv2Ref.current.style.transitionDuration = 0.8 + 's'
     } else {
       mainDiv1Ref.current.style.filter = 'none';
       mainDiv2Ref.current.style.filter = 'none';
@@ -98,13 +100,13 @@ export default class MainContainer extends Component {
     return (
       <div className="main-container">
         < div className="main-div" ref={ mainDiv1Ref }>
-          < h1 style={{color: 'white', fontSize: 60 + 'px'}} >
+          < h1 className="main-title" >
             Happy Hour
           < / h1 >
         < / div>
         < div className="main-div2" ref={ mainDiv2Ref }>
           < div className="bar-counter">
-            Bar Counter
+
           < / div >
           < div className="bar-stools" >
             { renderBarSpots() }
