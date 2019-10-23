@@ -30,9 +30,20 @@ export default class CreateDrink extends Component {
     console.log(e.target);
     console.log(e.target.innerText);
     const ingredientName = e.target.innerText;
-    this.setState(prevState => {
-      return {ingredientsList: [...prevState.ingredientsList, ingredientName]}
-    })
+    const { ingredientsList } = this.state
+
+    if (ingredientsList.length < 5 && !ingredientsList.includes(ingredientName)) {
+      this.setState(prevState => {
+        return {ingredientsList: [...prevState.ingredientsList, ingredientName]}
+      })
+    } else {
+      return null
+    }
+  }
+
+  displayIngredients = () => {
+    const { ingredientsList } = this.state;
+    return ingredientsList.map(ingredient => < li >{ ingredient }< / li >)
   }
 
   filteredIngredients = () => {
@@ -57,7 +68,7 @@ export default class CreateDrink extends Component {
   render(){
     console.log(this.props.location.filterProps)
     const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
-    const { handleChange, filteredIngredients, handleIngredientClick } = this
+    const { handleChange, filteredIngredients, displayIngredients } = this
     const { drinkName, search } = this.state
     return(
       < div className='create-div'>
@@ -74,7 +85,7 @@ export default class CreateDrink extends Component {
           < div className='card-main'>
           < div className='card-ingredients'>
             Card Ingredients
-            { handleIngredientClick }
+            { displayIngredients() }
           < /div>
           < div className='search'>
             Search: <input type='search' name='search' onChange={ handleChange } value={ search }></input>
