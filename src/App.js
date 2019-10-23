@@ -77,7 +77,7 @@ class App extends Component {
 
   render() {
     const { state: {errors, loggedInUserId, token},
-            onSubmitLogIn, onSubmitSignUp } = this
+            onSubmitLogIn, onSubmitSignUp, goHome } = this
 
     return (
       <div className="App">
@@ -108,7 +108,8 @@ class App extends Component {
         <Route exact
           path= '/create-drink'
           render={(props) =>
-            < CreateDrink {...props}/>}
+            < CreateDrink {...props}
+            goHome={goHome}/>}
          />
       </div>
     );

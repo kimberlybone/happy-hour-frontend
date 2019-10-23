@@ -41,6 +41,7 @@ export default class CreateDrink extends Component {
 
   handleCreateDrink = () => {
     const { props: {
+              goHome,
               location: {
                 filterProps: {loggedInUserId, token}
               }
@@ -70,7 +71,10 @@ export default class CreateDrink extends Component {
 
     fetch(URL + '/recipes', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(recipe => {
+      alert(`Your ${recipe.name} has been created!`)
+      goHome()
+    })
   }
 
   displayIngredients = () => {
