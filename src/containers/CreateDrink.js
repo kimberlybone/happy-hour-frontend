@@ -10,7 +10,8 @@ export default class CreateDrink extends Component {
     allIngredients: [],
     search: '',
     category: '',
-    drinkName: ''
+    drinkName: '',
+    ingredientsList: []
   }
 
   handleChange = e => {
@@ -25,10 +26,26 @@ export default class CreateDrink extends Component {
   //   })
   // }
 
+  handleIngredientClick = e => {
+    console.log(e.target);
+    console.log(e.target.innerText);
+    const ingredientName = e.target.innerText;
+    this.setState(prevState => {
+      return {ingredientsList: [...prevState.ingredientsList, ingredientName]}
+    })
+  }
+
   filteredIngredients = () => {
-    const { allIngredients, search } = this.state
+    const { state: {allIngredients, search}, handleIngredientClick } = this
     const ingredients = allIngredients.filter(ingredient => ingredient.name.toLowerCase().includes(search.toLowerCase()))
-    return ingredients.map(ingredient => < li >{ingredient.name}< /li >)
+    return ingredients.map(ingredient => {
+      const { id, name } = ingredient
+      return < li key={id}
+                  id={ id }
+                  onClick={ (e) => handleIngredientClick(e) } >
+                  { name }
+              < /li >
+    })
   }
 
   componentDidMount() {
@@ -40,7 +57,7 @@ export default class CreateDrink extends Component {
   render(){
     console.log(this.props.location.filterProps)
     const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
-    const { handleChange, filteredIngredients } = this
+    const { handleChange, filteredIngredients, handleIngredientClick } = this
     const { drinkName, search } = this.state
     return(
       < div className='create-div'>
@@ -55,7 +72,10 @@ export default class CreateDrink extends Component {
               < /form>
           < /div>
           < div className='card-main'>
-          < div className='card-ingredients'> Card Ingredients < /div>
+          < div className='card-ingredients'>
+            Card Ingredients
+            { handleIngredientClick }
+          < /div>
           < div className='search'>
             Search: <input type='search' name='search' onChange={ handleChange } value={ search }></input>
             < ul >
