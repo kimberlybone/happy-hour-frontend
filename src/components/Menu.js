@@ -91,7 +91,6 @@ export default class Menu extends Component {
               pathname:'/create-drink',
               filterProps:{
                 categories,
-                handleFilteredItems,
                 loggedInUserId,
                 token
               }

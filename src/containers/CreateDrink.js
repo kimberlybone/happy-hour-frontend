@@ -41,10 +41,10 @@ export default class CreateDrink extends Component {
 
   handleCreateDrink = () => {
     const { props: {
-              goHome,
-              location: {
-                filterProps: {loggedInUserId, token}
-              }
+              goHome
+              // location: {
+              //   filterProps: {loggedInUserId, token}
+              // }
             },
             state: {
               category,
@@ -52,11 +52,11 @@ export default class CreateDrink extends Component {
               ingredientsList,
               directions
             } } = this;
-      console.log(loggedInUserId)
+      // console.log(loggedInUserId)
     const config = {
       method: 'POST',
       headers: {
-        'Authorization': token,
+        'Authorization': localStorage.token,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -65,7 +65,7 @@ export default class CreateDrink extends Component {
         'category': category,
         'ingredients': ingredientsList,
         'instructions': directions,
-        'user_id': loggedInUserId
+        'user_id': localStorage.loggedInUserId
       })
     }
 
@@ -97,10 +97,10 @@ export default class CreateDrink extends Component {
   }
 
   componentDidMount() {
-    const { token } = this.props.location.filterProps
+    // const { token } = this.props.location.filterProps
     const config = {
       headers: {
-        'Authorization': token
+        'Authorization': localStorage.token
       }
     }
     fetch(URL + '/ingredients', config)
