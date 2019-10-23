@@ -22,7 +22,7 @@ export default class Filter extends Component {
   render() {
     return (
       <div>
-        Filter Drink By: < select onChange={this.handleChange} name='category'>
+        Category: < select onChange={this.handleChange} name='category'>
           {this.handleCategories()}
         < /select >
       </div>

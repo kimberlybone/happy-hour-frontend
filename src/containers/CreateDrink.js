@@ -48,7 +48,7 @@ export default class CreateDrink extends Component {
         Recipe Card
           < div className='card-header'>
               < form onChange={ handleChange }>
-                Category: {<Filter categories={ categories }
+                {<Filter categories={ categories }
                         handleChange={ this.handleChange }/>}
 
                 Drink Name:<input type='text' name='drinkName' value={ drinkName }></input>
