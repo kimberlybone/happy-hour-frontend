@@ -27,7 +27,7 @@
   grid-area: 'card-main';
   display: grid;
   grid-template-columns: 65% 35%;
-  gird-template-areas: 'card-ingredients search'
+  grid-template-areas: 'card-ingredients search'
 }
 .card-ingredients {
   grid-area: 'card-ingredients';
@@ -37,4 +37,16 @@
 }
 .card-directions {
   grid-area: 'card-directions';
+  text-align: center;
+}
+
+.ingredients-search-list {
+  height: 40vh;
+  overflow: scroll;
+  /* background-color: red; */
+}
+
+textarea {
+  width: 50%;
+  height: 30%;
 }

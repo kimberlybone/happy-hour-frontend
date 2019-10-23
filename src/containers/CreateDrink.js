@@ -10,25 +10,86 @@ export default class CreateDrink extends Component {
     allIngredients: [],
     search: '',
     category: '',
-    drinkName: ''
+    drinkName: '',
+    ingredientsList: [],
+    directions: '',
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+    if (e.target.value.length < 500) {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
-  // handleCreateDrinkCategory = () => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
+
+  handleIngredientClick = e => {
+    console.log(e.target);
+    console.log(e.target.innerText);
+    const ingredientName = e.target.innerText;
+    const { ingredientsList } = this.state
+
+    if (ingredientsList.length < 5 && !ingredientsList.includes(ingredientName)) {
+      this.setState(prevState => {
+        return {ingredientsList: [...prevState.ingredientsList, ingredientName]}
+      })
+    } else {
+      return null
+    }
+  }
+
+  handleCreateDrink = () => {
+    const { props: {
+              location: {
+                filterProps: {loggedInUserId, token}
+              }
+            },
+            state: {
+              category,
+              drinkName,
+              ingredientsList,
+              directions
+            } } = this;
+      console.log(loggedInUserId)
+    const config = {
+      method: 'POST',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        'name': drinkName,
+        'category': category,
+        'ingredients': ingredientsList,
+        'instructions': directions,
+        'user_id': loggedInUserId
+      })
+    }
+
+    fetch(URL + '/recipes', config)
+    .then(res => res.json())
+    .then(console.log)
+  }
+
+  displayIngredients = () => {
+    const { ingredientsList } = this.state;
+    return ingredientsList.map(ingredient => < li key={ingredient} >{ ingredient }< / li >)
+  }
 
   filteredIngredients = () => {
-    const { allIngredients, search } = this.state
+    const { state: {allIngredients, search}, handleIngredientClick } = this
     const ingredients = allIngredients.filter(ingredient => ingredient.name.toLowerCase().includes(search.toLowerCase()))
-    return ingredients.map(ingredient => < li >{ingredient.name}< /li >)
+    return ingredients.map(ingredient => {
+      const { id, name } = ingredient
+      return < li key={id}
+                  id={ id }
+                  className='ingredient-suggestion'
+                  onClick={ (e) => handleIngredientClick(e) } >
+                  { name }
+              < /li >
+    })
   }
 
   componentDidMount() {
@@ -38,14 +99,13 @@ export default class CreateDrink extends Component {
   }
 
   render(){
-    console.log(this.props.location.filterProps)
     const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
-    const { handleChange, filteredIngredients } = this
-    const { drinkName, search } = this.state
+    const { handleChange, filteredIngredients, displayIngredients, handleCreateDrink } = this
+    const { drinkName, search, directions } = this.state
     return(
       < div className='create-div'>
         < div className='recipe-card'>
-        Recipe Card
+        < h1 >Recipe Card< / h1 >
           < div className='card-header'>
               < form onChange={ handleChange }>
                 {<Filter categories={ categories }
@@ -55,15 +115,29 @@ export default class CreateDrink extends Component {
               < /form>
           < /div>
           < div className='card-main'>
-          < div className='card-ingredients'> Card Ingredients < /div>
+          < div className='card-ingredients'>
+            Card Ingredients
+            < ul >
+              { displayIngredients() }
+            < / ul >
+          < /div>
           < div className='search'>
             Search: <input type='search' name='search' onChange={ handleChange } value={ search }></input>
-            < ul >
+            < ul className='ingredients-search-list' >
               { filteredIngredients() }
             < /ul >
           < /div>
           < /div>
-          < div className='card-directions'>Card Directions< / div>
+          < div className='card-directions'>
+            Card Directions
+            < br />
+            < textarea className='directions-text'
+                        onChange={ handleChange }
+                        name='directions'
+                        value={ directions }/>
+            < br />
+          < button onClick={ handleCreateDrink } >Create Drink< / button>
+          < / div>
         < / div >
       < / div >
     )

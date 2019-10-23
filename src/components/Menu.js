@@ -62,7 +62,9 @@ export default class Menu extends Component {
     const { props: {
               categories,
               handleFilteredItems,
-              errors
+              errors,
+              loggedInUserId,
+              token
             },
             renderMenuItems,
             handleCloseMenu } = this
@@ -89,7 +91,9 @@ export default class Menu extends Component {
               pathname:'/create-drink',
               filterProps:{
                 categories,
-                handleFilteredItems
+                handleFilteredItems,
+                loggedInUserId,
+                token
               }
             }}
             className='button is-primary is-light side-button'
