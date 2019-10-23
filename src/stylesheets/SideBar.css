@@ -1,0 +1,36 @@
+.side-bar {
+  grid-area: side-bar;
+  background-color: white;
+}
+
+.user-div {
+  font-family: Optima, sans-serif;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.button.is-primary.is-light.side-button {
+  border: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #B7CFD8;
+  margin: 3px;
+  height: 35px;
+  width: auto;
+  font-size: 12;
+  transition: 0.3s;
+}
+
+.side-button:hover {
+  /* background-color: #ebfffc;
+  cursor: pointer;*/
+  box-shadow: 3px 3px 7px grey;
+}
+
+.bottom-side-bar {
+  /* scroll: overflow; */
+}

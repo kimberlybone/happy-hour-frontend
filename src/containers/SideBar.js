@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../SideBar.css';
+import '../stylesheets/SideBar.css';
 import User from '../components/User'
 import Favorite from '../components/Favorite'
 
@@ -32,11 +32,11 @@ export default class SideBar extends Component {
     return (
       < div className="side-bar" >
         { user ? < User user={user} /> : null }
-        < div >
-        < button className="side-button" onClick={ handleFavorites }> { showFavorites ? "Close" : "Favorites"} < /button >
+        < div className="bottom-side-bar">
+        < button className="button is-primary is-light side-button" onClick={ handleFavorites }> { showFavorites ? "Close" : "Favorites"} < /button >
           { showFavorites ? getFavorites() : null }
           < br >< /br >
-          < button className="side-button" onClick={ viewMenu }>View Menu< /button >
+          < button className="button is-primary is-light side-button" onClick={ viewMenu }>View Menu< /button >
         < /div >
       < /div >
     )
