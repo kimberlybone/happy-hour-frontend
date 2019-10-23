@@ -11,20 +11,18 @@ export default class CreateDrink extends Component {
     search: '',
     category: '',
     drinkName: '',
-    ingredientsList: []
+    ingredientsList: [],
+    directions: '',
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+    if (e.target.value.length < 500) {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
-  // handleCreateDrinkCategory = () => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
 
   handleIngredientClick = e => {
     console.log(e.target);
@@ -69,11 +67,11 @@ export default class CreateDrink extends Component {
     console.log(this.props.location.filterProps)
     const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
     const { handleChange, filteredIngredients, displayIngredients } = this
-    const { drinkName, search } = this.state
+    const { drinkName, search, directions } = this.state
     return(
       < div className='create-div'>
         < div className='recipe-card'>
-        Recipe Card
+        < h1 >Recipe Card< / h1 >
           < div className='card-header'>
               < form onChange={ handleChange }>
                 {<Filter categories={ categories }
@@ -94,7 +92,13 @@ export default class CreateDrink extends Component {
             < /ul >
           < /div>
           < /div>
-          < div className='card-directions'>Card Directions< / div>
+          < div className='card-directions'>
+            Card Directions
+            < textarea className='directions-text'
+                        onChange={ handleChange }
+                        name='directions'
+                        value={ directions }/>
+          < / div>
         < / div >
       < / div >
     )
