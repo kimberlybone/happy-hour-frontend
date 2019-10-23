@@ -53,23 +53,24 @@
   position: absolute;
   top: 65%;
   left: 13%;
-  max-height: auto;
-  width: 30%;
+  min-height: 30%;
+  max-height: 35%;
+  width: 25%;
 }
 
 .bar-stool.bs2 {
   position: absolute;
   top: 65%;
   left: 29%;
-  max-height: auto;
-  width: 30%;
+  max-height: 35%;
+  width: 25%;
 }
 
 .bar-stool.bs3 {
   position: absolute;
   top: 65%;
   left: 45%;
-  max-height: auto;
+  max-height: 35%;
   width: 30%;
 }
 
@@ -77,7 +78,7 @@
   position: absolute;
   top: 65%;
   left: 61%;
-  max-height: auto;
+  max-height: 35%;
   width: 30%;
 }
 
@@ -85,7 +86,7 @@
   position: absolute;
   top: 65%;
   left: 77%;
-  max-height: auto;
+  max-height: 35%;
   width: 30%;
 }
 
