@@ -65,6 +65,7 @@ export default class MainContainer extends Component {
   }
 
   renderBarSpots = () => {
+    // debugger
     return (
       < Fragment >
         < BarSpot spotId='bs1' />
@@ -106,7 +107,7 @@ export default class MainContainer extends Component {
             Bar Counter
           < / div >
           < div className="bar-stools" >
-            { renderBarSpots }
+            { renderBarSpots() }
           < / div >
         </div>
         {

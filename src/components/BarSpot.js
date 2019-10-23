@@ -10,7 +10,9 @@ export default class BarSpot extends Component {
     const { spotId } = this.props
     return (
       < div className={ `bar-spot ${spotId}` } >
-
+        < img src={require('../Assets/bar-stool-2.png')}
+              alt='bar-stool'
+              className={ `bar-stool ${spotId}` } />
       < / div >
     )
   }
