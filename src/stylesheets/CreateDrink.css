@@ -13,4 +13,28 @@
   z-index: 100;
   background-color: cyan;
   border-radius: 4px;
+  display: grid;
+  grid-template-rows: 5% 10% 65% 20%;
+  grid-template-areas:
+    'card-header'
+    'card-main'
+    'card-directions';
+}
+.card-header {
+  grid-area: 'card-header';
+}
+.card-main {
+  grid-area: 'card-main';
+  display: grid;
+  grid-template-columns: 65% 35%;
+  gird-template-areas: 'card-ingredients search'
+}
+.card-ingredients {
+  grid-area: 'card-ingredients';
+}
+.search {
+  grid-area: 'search';
+}
+.card-directions {
+  grid-area: 'card-directions';
 }

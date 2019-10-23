@@ -85,7 +85,15 @@ export default class Menu extends Component {
         < / div >
         < div className='menu-close' >
           < button className="button is-primary is-light side-button" onClick={ handleCloseMenu }> Close < /button >
-          < NavLink to='/create-drink' className='button is-primary is-light side-button' onClick={null}> Create Your Own Drink < /NavLink>
+          < NavLink to={{
+              pathname:'/create-drink',
+              filterProps:{
+                categories,
+                handleFilteredItems
+              }
+            }}
+            className='button is-primary is-light side-button'
+            onClick={null}> Create Your Own Drink < /NavLink>
         < /div >
       < / div >
     )
