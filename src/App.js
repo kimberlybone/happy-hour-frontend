@@ -3,7 +3,7 @@ import LoginForm from './components/LoginForm'
 import HomeContainer from './containers/HomeContainer'
 import CreateDrink from './containers/CreateDrink'
 import NotFound from './components/NotFound'
-import {Route, withRouter} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './stylesheets/App.css';
 
@@ -82,37 +82,39 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Route exact
-          path= '/login'
-          render={(props) =>
-            < LoginForm {...props}
-            isReturningUser={ true }
-            errors={ errors }
-            onSubmitLogIn={ onSubmitLogIn }
-            onSubmitSignUp={ onSubmitSignUp }/>}
-           />
-        <Route exact
-          path= '/signup'
-          render={(props) =>
-            < LoginForm {...props}
-            isReturningUser={ false }
-            errors={ errors }
-            onSubmitLogIn={ onSubmitLogIn }
-            onSubmitSignUp={ onSubmitSignUp }/>}
-           />
-        <Route exact
-          path='/'
-          render={ () => < HomeContainer
-            loggedInUserId={ loggedInUserId }
-            token={ token }/> }
-           />
-        <Route exact
-          path= '/create-drink'
-          render={(props) =>
-            < CreateDrink {...props}
-            goHome={goHome}/>}
-         />
-       <Route component={ NotFound } />
+        <Switch>
+          <Route exact
+            path= '/login'
+            render={(props) =>
+              < LoginForm {...props}
+              isReturningUser={ true }
+              errors={ errors }
+              onSubmitLogIn={ onSubmitLogIn }
+              onSubmitSignUp={ onSubmitSignUp }/>}
+              />
+            <Route exact
+              path= '/signup'
+              render={(props) =>
+                < LoginForm {...props}
+                isReturningUser={ false }
+                errors={ errors }
+                onSubmitLogIn={ onSubmitLogIn }
+                onSubmitSignUp={ onSubmitSignUp }/>}
+                />
+              <Route exact
+                path='/'
+                render={ () => < HomeContainer
+                  loggedInUserId={ loggedInUserId }
+                  token={ token }/> }
+                  />
+                <Route exact
+                  path= '/create-drink'
+                  render={(props) =>
+                    < CreateDrink {...props}
+                    goHome={goHome}/>}
+                    />
+                  <Route component={ NotFound } />
+        </Switch>
       </div>
     );
   };
