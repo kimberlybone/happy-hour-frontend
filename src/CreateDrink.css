@@ -1,0 +1,16 @@
+.create-div {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./Assets/bar-background.jpg');
+  background-size: 100% 100%;
+}
+.recipe-card {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  z-index: 100;
+  background-color: cyan;
+  border-radius: 4px;
+}

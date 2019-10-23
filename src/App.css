@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -19,4 +21,27 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+form {
+  width: 50vw;
+}
+
+.form-div {
+  text-align: center;
+  width: 50vw;
+  margin-left: 25vw;
+  margin-right: 25vw;
+}
+
+.button.is-primary.is-light.is-active {
+  background-color: #00d1b2;
+  font-weight: bold;
+  text-decoration: underline;
+  color: white;
+}
+
+.login-btn {
+  width: 25vw;
+  margin-bottom: 3vw;
 }

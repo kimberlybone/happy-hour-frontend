@@ -1,0 +1,161 @@
+.main-container {
+  grid-area: main-container;
+  background-color: pink;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    'main-div'
+    'main-div2';
+    /*'bar-counter'
+    'bar-stools'*/
+  overflow: hidden;
+}
+.main-div {
+  grid-area: main-div;
+  background-image: url('https://www.editionhotels.com/wp-content/uploads/2018/09/EDT_BCN2_22_RGB_V2-e1538171311702.jpg');
+  background-position: center;
+  background-size: cover;
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+}
+
+.main-div2 {
+  grid-area: main-div2;
+  /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    'bar-counter'
+    'bar-stools'
+}
+
+.bar-counter {
+  grid-area: bar-counter;
+  background-image: url('./Assets/cartoon-counter.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.bar-stools {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-areas: 'bs1 bs2 bs3 bs4 bs5';
+  background-color: tan;
+}
+
+.bar-spot {
+  text-align: center;
+  overflow: visible;
+}
+
+.bar-stool.bs1 {
+  position: absolute;
+  top: 65%;
+  left: 13%;
+  min-height: 30%;
+  max-height: 35%;
+  width: 25%;
+}
+
+.bar-stool.bs2 {
+  position: absolute;
+  top: 65%;
+  left: 29%;
+  max-height: 35%;
+  width: 25%;
+}
+
+.bar-stool.bs3 {
+  position: absolute;
+  top: 65%;
+  left: 45%;
+  max-height: 35%;
+  width: 30%;
+}
+
+.bar-stool.bs4 {
+  position: absolute;
+  top: 65%;
+  left: 61%;
+  max-height: 35%;
+  width: 30%;
+}
+
+.bar-stool.bs5 {
+  position: absolute;
+  top: 65%;
+  left: 77%;
+  max-height: 35%;
+  width: 30%;
+}
+
+#menu {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  z-index: 100;
+  background-color: white;
+  border-radius: 4px;
+  display: grid;
+  grid-template-rows: 20% 70% 10%;
+  grid-template-areas:
+    'header-div'
+    'menu-items'
+    'menu-close'
+}
+
+div.menu-items {
+  grid-area: menu-items;
+  overflow: scroll;
+}
+
+div.header-div {
+  grid-area: header-div;
+}
+
+div.menu-close {
+  grid-area: menu-close;
+}
+.ingredients {
+  font-size: 10px;
+  font-style: italic;
+  font-family: Brush Script Std, cursive;
+}
+
+.menu-item {
+  font-weight: bold;
+}
+.header-div {
+  border-bottom: solid;
+  font-family: Optima, sans-serif;
+}
+.menu-close {
+  border-top: solid;
+}
+.menu-gif {
+  width: 100px;
+  height: 100px;
+  float: right;
+  position: absolute;
+}
+
+.heart {
+  cursor: pointer;
+}
+
+.favorite {
+  color: red;
+}
+
+.error {
+  color: red;
+}
+.item-name {
+  cursor: pointer;
+}
+.item-name:hover {
+  color: green;
+}
