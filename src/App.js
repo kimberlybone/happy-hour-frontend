@@ -4,7 +4,7 @@ import HomeContainer from './containers/HomeContainer'
 import CreateDrink from './containers/CreateDrink'
 import {Route, withRouter} from 'react-router-dom'
 import 'bulma/css/bulma.css'
-import './App.css';
+import './stylesheets/App.css';
 
 const URL = 'http://localhost:3000'
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CreateDrink.css'
+import '../stylesheets/CreateDrink.css'
 
 export default class CreateDrink extends Component {
   render(){
