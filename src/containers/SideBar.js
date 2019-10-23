@@ -34,7 +34,7 @@ export default class SideBar extends Component {
         { user ? < User user={user} /> : null }
         < div className="bottom-side-bar">
         < button className="button is-primary is-light side-button" onClick={ handleFavorites }> { showFavorites ? "Close" : "Favorites"} < /button >
-          { showFavorites ? getFavorites() : null }
+          < div className='favorite-side-bar'>{ showFavorites ? getFavorites() : null }< /div >
           < br >< /br >
           < button className="button is-primary is-light side-button" onClick={ viewMenu }>View Menu< /button >
         < /div >
