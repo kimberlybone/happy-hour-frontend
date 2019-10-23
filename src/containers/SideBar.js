@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../stylesheets/SideBar.css';
 import User from '../components/User'
 import Favorite from '../components/Favorite'
+import { NavLink } from 'react-router-dom'
 
 // const URL = 'http://localhost:3000'
 
@@ -20,6 +21,9 @@ export default class SideBar extends Component {
     }
   }
 
+  handleLogout = () => {
+    localStorage.clear()
+  }
 
   render(){
     const { props: {
@@ -37,6 +41,9 @@ export default class SideBar extends Component {
           < div className='favorite-side-bar'>{ showFavorites ? getFavorites() : null }< /div >
           < br >< /br >
           < button className="button is-primary is-light side-button" onClick={ viewMenu }>View Menu< /button >
+          < NavLink className="button is-primary is-light side-button"
+                    to='/login'
+                    onClick={ this.handleLogout }> Logout < /NavLink >
         < /div >
       < /div >
     )
