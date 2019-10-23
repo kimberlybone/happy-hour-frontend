@@ -97,7 +97,13 @@ export default class CreateDrink extends Component {
   }
 
   componentDidMount() {
-    fetch(URL + '/ingredients')
+    const { token } = this.props.location.filterProps
+    const config = {
+      headers: {
+        'Authorization': token
+      }
+    }
+    fetch(URL + '/ingredients', config)
     .then(res => res.json())
     .then(allIngredients => this.setState({allIngredients}))
   }

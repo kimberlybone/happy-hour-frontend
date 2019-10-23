@@ -21,12 +21,13 @@ export default class MainContainer extends Component {
 // FETCH RECIPES
   componentDidMount() {
     const { token } = this.props
-
-    fetch(URL + '/recipes', {
+    const config = {
       headers: {
         'Authorization': token
       }
-    })
+    }
+
+    fetch(URL + '/recipes', config)
     .then(res => res.json())
     .then(menuItems => {
       this.setState({menuItems})
