@@ -83,6 +83,7 @@ export default class MainContainer extends Component {
     const { state: { menuItems, filteredItems },
             props: {
               loggedInUserId,
+              token,
               updateBudget,
               user,
               handleCloseMenu,
@@ -118,10 +119,11 @@ export default class MainContainer extends Component {
           < Menu
           menuItems={ filteredItems.length ? filteredItems : menuItems }
           loggedInUserId={ loggedInUserId }
+          token={ token }
           user={ user }
           errors={ errors }
           handleFilteredItems={ handleFilteredItems }
-          categories={ getCategories() }
+          categories={ ['', ...getCategories()] }
           handleCloseMenu={ handleCloseMenu }
           handleAddFavorite={ handleAddFavorite }
           deleteFavorite={ deleteFavorite }

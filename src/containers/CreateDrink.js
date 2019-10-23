@@ -39,9 +39,43 @@ export default class CreateDrink extends Component {
     }
   }
 
+  handleCreateDrink = () => {
+    const { props: {
+              location: {
+                filterProps: {loggedInUserId, token}
+              }
+            },
+            state: {
+              category,
+              drinkName,
+              ingredientsList,
+              directions
+            } } = this;
+      console.log(loggedInUserId)
+    const config = {
+      method: 'POST',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        'name': drinkName,
+        'category': category,
+        'ingredients': ingredientsList,
+        'instructions': directions,
+        'user_id': loggedInUserId
+      })
+    }
+
+    fetch(URL + '/recipes', config)
+    .then(res => res.json())
+    .then(console.log)
+  }
+
   displayIngredients = () => {
     const { ingredientsList } = this.state;
-    return ingredientsList.map(ingredient => < li >{ ingredient }< / li >)
+    return ingredientsList.map(ingredient => < li key={ingredient} >{ ingredient }< / li >)
   }
 
   filteredIngredients = () => {
@@ -51,6 +85,7 @@ export default class CreateDrink extends Component {
       const { id, name } = ingredient
       return < li key={id}
                   id={ id }
+                  className='ingredient-suggestion'
                   onClick={ (e) => handleIngredientClick(e) } >
                   { name }
               < /li >
@@ -64,9 +99,8 @@ export default class CreateDrink extends Component {
   }
 
   render(){
-    console.log(this.props.location.filterProps)
     const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
-    const { handleChange, filteredIngredients, displayIngredients } = this
+    const { handleChange, filteredIngredients, displayIngredients, handleCreateDrink } = this
     const { drinkName, search, directions } = this.state
     return(
       < div className='create-div'>
@@ -83,21 +117,26 @@ export default class CreateDrink extends Component {
           < div className='card-main'>
           < div className='card-ingredients'>
             Card Ingredients
-            { displayIngredients() }
+            < ul >
+              { displayIngredients() }
+            < / ul >
           < /div>
           < div className='search'>
             Search: <input type='search' name='search' onChange={ handleChange } value={ search }></input>
-            < ul >
+            < ul className='ingredients-search-list' >
               { filteredIngredients() }
             < /ul >
           < /div>
           < /div>
           < div className='card-directions'>
             Card Directions
+            < br />
             < textarea className='directions-text'
                         onChange={ handleChange }
                         name='directions'
                         value={ directions }/>
+            < br />
+          < button onClick={ handleCreateDrink } >Create Drink< / button>
           < / div>
         < / div >
       < / div >
