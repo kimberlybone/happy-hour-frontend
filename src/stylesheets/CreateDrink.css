@@ -11,7 +11,7 @@
   top: 10%;
   left: 25%;
   z-index: 100;
-  background-color: cyan;
+  background-color: white;
   border-radius: 4px;
   display: grid;
   grid-template-rows: 5% 10% 65% 20%;
@@ -26,27 +26,74 @@
 .card-main {
   grid-area: 'card-main';
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 60% 40%;
   grid-template-areas: 'card-ingredients search'
 }
 .card-ingredients {
   grid-area: 'card-ingredients';
+  border-bottom: inset;
+  border-right: inset;
+  padding-top: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .search {
   grid-area: 'search';
+  border-bottom: inset;
+  padding-top: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .card-directions {
   grid-area: 'card-directions';
   text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .ingredients-search-list {
-  height: 40vh;
+  height: 45vh;
   overflow: scroll;
+  font-family: Brush Script Std, cursive;
+  font-style: italic;
   /* background-color: red; */
 }
 
+.placeholder {
+  color: grey;
+}
+
+.display-ingredients {
+  font-family: Brush Script Std, cursive;
+  font-style: italic;
+}
+
+.ingredient-suggestion:hover {
+  cursor: pointer;
+  color: green;
+  font-weight: bold;
+}
+
 textarea {
-  width: 50%;
+  width: 60%;
   height: 30%;
+  border-radius: 4px;
+}
+.card-title {
+  font-size: 18px;
+  font-family: Optima, sans-serif;
+
+}
+.card-main-title {
+  font-size: 25px;
+  font-style: italic;
+  font-family: Brush Script Std, cursive;
+  font-weight: bold;
+}
+.form-label {
+  display: inline;
+  font-family: Optima, sans-serif;
+}
+input {
+  border-radius: 4px;
 }
