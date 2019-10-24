@@ -45,3 +45,13 @@ form {
   width: 25vw;
   margin-bottom: 3vw;
 }
+
+.login-title {
+  font-style: italic;
+  font-family: Brush Script Std, cursive;
+  font-weight: bold;
+  font-size: 100px;
+  padding: 50px;
+  text-shadow: 2px 2px 4px #000000;
+
+}
