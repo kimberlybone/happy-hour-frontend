@@ -61,41 +61,41 @@
 .bar-stool.bs1 {
   position: absolute;
   top: 65%;
-  left: 13%;
+  left: 21%;
   max-height: auto;
-  width: 30%;
+  width: 15%;
 }
 
 .bar-stool.bs2 {
   position: absolute;
   top: 65%;
-  left: 29%;
+  left: 37%;
   max-height: auto;
-  width: 30%;
+  width: 15%;
 }
 
 .bar-stool.bs3 {
   position: absolute;
   top: 65%;
-  left: 45%;
+  left: 53%;
   max-height: auto;
-  width: 30%;
+  width: 15%;
 }
 
 .bar-stool.bs4 {
   position: absolute;
   top: 65%;
-  left: 61%;
+  left: 69%;
   max-height: auto;
-  width: 30%;
+  width: 15%;
 }
 
 .bar-stool.bs5 {
   position: absolute;
   top: 65%;
-  left: 77%;
+  left: 85%;
   max-height: auto;
-  width: 30%;
+  width: 15%;
 }
 
 #menu {
