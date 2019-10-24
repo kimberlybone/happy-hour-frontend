@@ -4,6 +4,9 @@ import Filter from '../components/Filter'
 
 const URL = 'http://localhost:3000'
 
+// default categories list
+const defaultCategories = ['', 'fizz', 'daiquiri', 'brandy', 'rum', 'long_island', 'negroni', 'martini', 'margarita', 'gin', 'sidecar', 'sour', 'punch', 'tequila', 'mojito', 'smash', 'mule', 'flip', 'colada', 'vodka', 'collins', 'manhattan', 'bloody', 'cosmopolitan']
+
 export default class CreateDrink extends Component {
 
   state = {
@@ -109,7 +112,7 @@ export default class CreateDrink extends Component {
   }
 
   render(){
-    const { categories } = this.props.location.filterProps || {categories: ['margarita', 'mojito']}
+    const { categories } = this.props.location.filterProps || {categories: defaultCategories}
     const { handleChange, filteredIngredients, displayIngredients, handleCreateDrink } = this
     const { drinkName, search, directions } = this.state
     return(

@@ -22,7 +22,8 @@ class App extends Component {
       bs3: false,
       bs4: false,
       bs5: false
-    }
+    },
+    canChooseSeat: true
   }
 
   setAuth = (loggedInUserId, token) => {
@@ -80,14 +81,17 @@ class App extends Component {
   }
 
   occupySpot = spot => {
-    // console.log('occupied');
-    this.setState({
-      ...this.state,
-      occupied: {
-        ...this.state.occupied,
-        [spot]: true
-      }
-    })
+
+    if (this.state.canChooseSeat) {
+      this.setState({
+        ...this.state,
+        occupied: {
+          ...this.state.occupied,
+          [spot]: true
+        },
+        canChooseSeat: false
+      })
+    }
   }
 
   unoccupySpots = () => {
