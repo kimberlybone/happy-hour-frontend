@@ -22,7 +22,7 @@ export default class Filter extends Component {
   render() {
     return (
       <div>
-        Category: < select onChange={this.handleChange} name='category'>
+        Choose Category: < select onChange={this.handleChange} name='category'>
           {this.handleCategories()}
         < /select >
       </div>

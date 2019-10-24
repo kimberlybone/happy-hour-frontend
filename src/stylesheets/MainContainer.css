@@ -65,6 +65,9 @@
   max-height: auto;
   width: 15%;
 }
+.bar-stool.bs1:hover {
+  cursor: pointer;
+}
 
 .bar-stool.bs2 {
   position: absolute;
@@ -72,6 +75,9 @@
   left: 37%;
   max-height: auto;
   width: 15%;
+}
+.bar-stool.bs2:hover {
+  cursor: pointer;
 }
 
 .bar-stool.bs3 {
@@ -81,6 +87,9 @@
   max-height: auto;
   width: 15%;
 }
+.bar-stool.bs3:hover {
+  cursor: pointer;
+}
 
 .bar-stool.bs4 {
   position: absolute;
@@ -89,6 +98,9 @@
   max-height: auto;
   width: 15%;
 }
+.bar-stool.bs4:hover {
+  cursor: pointer;
+}
 
 .bar-stool.bs5 {
   position: absolute;
@@ -96,6 +108,9 @@
   left: 85%;
   max-height: auto;
   width: 15%;
+}
+.bar-stool.bs5:hover {
+  cursor: pointer;
 }
 
 #menu {

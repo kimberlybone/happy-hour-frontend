@@ -26,7 +26,7 @@ export default class BarSpot extends Component {
 
       {
         occupied ?
-        < img src={require('../Assets/bar-guy.png')} alt='person' className={`person ${spotId}`} />
+        < img src={require('../Assets/brian-6.png')} alt='person' className={`person ${spotId}`} />
         :
         < img src={require('../Assets/bar-stool-2.png')}
               alt='bar-stool'

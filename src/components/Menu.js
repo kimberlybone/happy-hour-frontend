@@ -72,7 +72,7 @@ export default class Menu extends Component {
     return (
       < div id='menu' >
       < div className='header-div' >
-        < h1 style={{ fontSize: 30 + 'px' }}>Happy Hour Menu
+        < h1 style={{ fontSize: 30 + 'px' }}>It's Happy Hour Time!
           < img src="https://media.giphy.com/media/1wmcMq0R4aYpRpqvkL/giphy.gif" alt="gif" className='menu-gif'>
           < /img >
         < / h1 >
@@ -86,7 +86,7 @@ export default class Menu extends Component {
           { renderMenuItems() }
         < / div >
         < div className='menu-close' >
-          < button className="button is-primary is-light side-button" onClick={ handleCloseMenu }> Close < /button >
+          < button className="button is-primary is-light side-button" onClick={ handleCloseMenu }> Close Menu< /button >
           < NavLink to={{
               pathname:'/create-drink',
               filterProps:{
