@@ -126,7 +126,7 @@ export default class LoginForm extends Component {
 
   render() {
     const { props: {isReturningUser}, renderForm } = this;
-    console.log(isReturningUser);
+    // console.log(isReturningUser);
     return (
 
       < div className='form-div'>

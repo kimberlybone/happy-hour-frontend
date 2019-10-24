@@ -31,6 +31,7 @@ ul {
   box-shadow: 3px 3px 7px grey;
 }
 
-.bottom-side-bar {
-  /* scroll: overflow; */
+.favorite-side-bar {
+  overflow: scroll;
+  max-height: 30vh;
 }

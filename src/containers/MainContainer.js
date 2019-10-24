@@ -21,12 +21,13 @@ export default class MainContainer extends Component {
 // FETCH RECIPES
   componentDidMount() {
     const { token } = this.props
-
-    fetch(URL + '/recipes', {
+    const config = {
       headers: {
         'Authorization': token
       }
-    })
+    }
+
+    fetch(URL + '/recipes', config)
     .then(res => res.json())
     .then(menuItems => {
       this.setState({menuItems})
@@ -67,14 +68,14 @@ export default class MainContainer extends Component {
   }
 
   renderBarSpots = () => {
-    // debugger
+    const {occupied, occupySpot} = this.props
     return (
       < Fragment >
-        < BarSpot spotId='bs1' />
-        < BarSpot spotId='bs2' />
-        < BarSpot spotId='bs3' />
-        < BarSpot spotId='bs4' />
-        < BarSpot spotId='bs5' />
+        < BarSpot occupied={ occupied['bs1'] } occupySpot={ occupySpot } spotId='bs1' />
+      < BarSpot occupied={ occupied['bs2'] } occupySpot={ occupySpot } spotId='bs2' />
+    < BarSpot occupied={ occupied['bs3'] } occupySpot={ occupySpot } spotId='bs3' />
+  < BarSpot occupied={ occupied['bs4'] } occupySpot={ occupySpot } spotId='bs4' />
+< BarSpot occupied={ occupied['bs5'] } occupySpot={ occupySpot } spotId='bs5' />
       < / Fragment >
     )
   }
@@ -89,7 +90,9 @@ export default class MainContainer extends Component {
               handleCloseMenu,
               handleAddFavorite,
               errors,
-              deleteFavorite
+              deleteFavorite,
+              occupied,
+              occupySpot
             },
             mainDiv1Ref,
             mainDiv2Ref,

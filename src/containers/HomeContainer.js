@@ -127,7 +127,7 @@ export default class HomeContainer extends Component {
 
 
   render() {
-    const { props:{ loggedInUserId, token },
+    const { props:{ loggedInUserId, token, occupied, occupySpot, unoccupySpots },
             state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
             updateBudget,
@@ -145,6 +145,7 @@ export default class HomeContainer extends Component {
             user={ user }
             showFavorites={ showFavorites }
             handleFavorites={ handleFavorites }
+            unoccupySpots={ unoccupySpots }
             />
         < MainContainer
             viewMenu={ viewMenu }
@@ -156,6 +157,8 @@ export default class HomeContainer extends Component {
             handleAddFavorite={ handleAddFavorite }
             deleteFavorite={ deleteFavorite }
             updateBudget={updateBudget}
+            occupied={ occupied }
+            occupySpot={ occupySpot }
             />
       </div>
     )

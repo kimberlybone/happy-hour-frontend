@@ -25,8 +25,8 @@ export default class CreateDrink extends Component {
 
 
   handleIngredientClick = e => {
-    console.log(e.target);
-    console.log(e.target.innerText);
+    // console.log(e.target);
+    // console.log(e.target.innerText);
     const ingredientName = e.target.innerText;
     const { ingredientsList } = this.state
 
@@ -41,9 +41,10 @@ export default class CreateDrink extends Component {
 
   handleCreateDrink = () => {
     const { props: {
-              location: {
-                filterProps: {loggedInUserId, token}
-              }
+              goHome
+              // location: {
+              //   filterProps: {loggedInUserId, token}
+              // }
             },
             state: {
               category,
@@ -51,11 +52,11 @@ export default class CreateDrink extends Component {
               ingredientsList,
               directions
             } } = this;
-      console.log(loggedInUserId)
+      // console.log(loggedInUserId)
     const config = {
       method: 'POST',
       headers: {
-        'Authorization': token,
+        'Authorization': localStorage.token,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -64,13 +65,16 @@ export default class CreateDrink extends Component {
         'category': category,
         'ingredients': ingredientsList,
         'instructions': directions,
-        'user_id': loggedInUserId
+        'user_id': localStorage.loggedInUserId
       })
     }
 
     fetch(URL + '/recipes', config)
     .then(res => res.json())
-    .then(console.log)
+    .then(recipe => {
+      alert(`Your ${recipe.name} has been created!`)
+      goHome()
+    })
   }
 
   displayIngredients = () => {
@@ -93,7 +97,13 @@ export default class CreateDrink extends Component {
   }
 
   componentDidMount() {
-    fetch(URL + '/ingredients')
+    // const { token } = this.props.location.filterProps
+    const config = {
+      headers: {
+        'Authorization': localStorage.token
+      }
+    }
+    fetch(URL + '/ingredients', config)
     .then(res => res.json())
     .then(allIngredients => this.setState({allIngredients}))
   }

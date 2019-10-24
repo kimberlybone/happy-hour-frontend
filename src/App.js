@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import LoginForm from './components/LoginForm'
 import HomeContainer from './containers/HomeContainer'
 import CreateDrink from './containers/CreateDrink'
-import {Route, withRouter} from 'react-router-dom'
+import NotFound from './components/NotFound'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './stylesheets/App.css';
 
@@ -14,7 +15,14 @@ class App extends Component {
   state = {
     errors: [],
     loggedInUserId: localStorage.loggedInUserId,
-    token: localStorage.token
+    token: localStorage.token,
+    occupied: {
+      bs1: false,
+      bs2: false,
+      bs3: false,
+      bs4: false,
+      bs5: false
+    }
   }
 
   setAuth = (loggedInUserId, token) => {
@@ -71,45 +79,76 @@ class App extends Component {
     })
   }
 
+  occupySpot = spot => {
+    // console.log('occupied');
+    this.setState({
+      ...this.state,
+      occupied: {
+        ...this.state.occupied,
+        [spot]: true
+      }
+    })
+  }
+
+  unoccupySpots = () => {
+    this.setState({
+      ...this.state,
+      occupied: {
+        bs1: false,
+        bs2: false,
+        bs3: false,
+        bs4: false,
+        bs5: false
+      }
+    })
+  }
+
   goHome = () => {
     this.props.history.push('/');
   };
 
   render() {
-    const { state: {errors, loggedInUserId, token},
-            onSubmitLogIn, onSubmitSignUp } = this
+    const { state: {errors, loggedInUserId, token, occupied},
+            onSubmitLogIn, onSubmitSignUp, goHome, occupySpot, unoccupySpots } = this
 
     return (
       <div className="App">
-        <Route exact
-          path= '/login'
-          render={(props) =>
-            < LoginForm {...props}
-            isReturningUser={ true }
-            errors={ errors }
-            onSubmitLogIn={ onSubmitLogIn }
-            onSubmitSignUp={ onSubmitSignUp }/>}
-           />
-        <Route exact
-          path= '/signup'
-          render={(props) =>
-            < LoginForm {...props}
-            isReturningUser={ false }
-            errors={ errors }
-            onSubmitLogIn={ onSubmitLogIn }
-            onSubmitSignUp={ onSubmitSignUp }/>}
-           />
-        <Route exact
-          path='/'
-          render={ () => < HomeContainer
-            loggedInUserId={ loggedInUserId }
-            token={ token }/> }
-           />
-        <Route exact
-          path= '/create-drink'
-          render={(props) =>
-            < CreateDrink {...props}/>}
-         />
+        <Switch>
+          <Route exact
+            path= '/login'
+            render={(props) =>
+              < LoginForm {...props}
+              isReturningUser={ true }
+              errors={ errors }
+              onSubmitLogIn={ onSubmitLogIn }
+              onSubmitSignUp={ onSubmitSignUp }/>}
+              />
+            <Route exact
+              path= '/signup'
+              render={(props) =>
+                < LoginForm {...props}
+                isReturningUser={ false }
+                errors={ errors }
+                onSubmitLogIn={ onSubmitLogIn }
+                onSubmitSignUp={ onSubmitSignUp }/>}
+                />
+              <Route exact
+                path='/'
+                render={ () => < HomeContainer
+                  loggedInUserId={ loggedInUserId }
+                  token={ token }
+                  occupied={ occupied }
+                  occupySpot={ occupySpot }
+                  unoccupySpots={ unoccupySpots }/> }
+                  />
+                <Route exact
+                  path= '/create-drink'
+                  render={(props) =>
+                    < CreateDrink {...props}
+                    goHome={goHome}/>}
+                    />
+                  <Route component={ NotFound } />
+        </Switch>
       </div>
     );
   };
