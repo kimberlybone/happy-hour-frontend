@@ -25,8 +25,8 @@ export default class CreateDrink extends Component {
 
 
   handleIngredientClick = e => {
-    console.log(e.target);
-    console.log(e.target.innerText);
+    // console.log(e.target);
+    // console.log(e.target.innerText);
     const ingredientName = e.target.innerText;
     const { ingredientsList } = this.state
 

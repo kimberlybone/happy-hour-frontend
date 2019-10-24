@@ -127,7 +127,7 @@ export default class HomeContainer extends Component {
 
 
   render() {
-    const { props:{ loggedInUserId, token },
+    const { props:{ loggedInUserId, token, occupied, occupySpot },
             state:{ viewMenu, user, showFavorites, errors },
             handleFavorites,
             updateBudget,
@@ -156,6 +156,8 @@ export default class HomeContainer extends Component {
             handleAddFavorite={ handleAddFavorite }
             deleteFavorite={ deleteFavorite }
             updateBudget={updateBudget}
+            occupied={ occupied }
+            occupySpot={ occupySpot }
             />
       </div>
     )

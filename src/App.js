@@ -15,7 +15,14 @@ class App extends Component {
   state = {
     errors: [],
     loggedInUserId: localStorage.loggedInUserId,
-    token: localStorage.token
+    token: localStorage.token,
+    occupied: {
+      bs1: false,
+      bs2: false,
+      bs3: false,
+      bs4: false,
+      bs5: false
+    }
   }
 
   setAuth = (loggedInUserId, token) => {
@@ -72,13 +79,24 @@ class App extends Component {
     })
   }
 
+  occupySpot = spot => {
+    console.log('occupied');
+    this.setState({
+      ...this.state,
+      occupied: {
+        ...this.state.occupied,
+        [spot]: true
+      }
+    }, () => console.log(this.state))
+  }
+
   goHome = () => {
     this.props.history.push('/');
   };
 
   render() {
-    const { state: {errors, loggedInUserId, token},
-            onSubmitLogIn, onSubmitSignUp, goHome } = this
+    const { state: {errors, loggedInUserId, token, occupied},
+            onSubmitLogIn, onSubmitSignUp, goHome, occupySpot } = this
 
     return (
       <div className="App">
@@ -105,7 +123,9 @@ class App extends Component {
                 path='/'
                 render={ () => < HomeContainer
                   loggedInUserId={ loggedInUserId }
-                  token={ token }/> }
+                  token={ token }
+                  occupied={ occupied }
+                  occupySpot={ occupySpot }/> }
                   />
                 <Route exact
                   path= '/create-drink'
