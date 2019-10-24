@@ -33,7 +33,6 @@ export default class LoginForm extends Component {
             <i className='fas fa-check'></i>
           </span>
         </div>
-        <p className='help is-success'>This name is available</p>
       </div>
 
       <div className="field">

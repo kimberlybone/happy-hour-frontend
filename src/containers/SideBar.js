@@ -36,7 +36,7 @@ export default class SideBar extends Component {
 
     return (
       < div className="side-bar" >
-      Sit down, relax & drink up!
+        < h2 className='greeting' >Choose a seat & drink up!< / h2 >
         { user ? < User user={user} /> : null }
         < div className="bottom-side-bar">
         < button className="button is-primary is-light side-button" onClick={ handleFavorites }> { showFavorites ? "Close Favorites" : "Favorites"} < /button >
