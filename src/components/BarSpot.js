@@ -26,7 +26,7 @@ export default class BarSpot extends Component {
 
       {
         this.state.occupied ?
-        < img src='https://images.vexels.com/media/users/3/146416/isolated/preview/c613c6b5667864f564324ff2fd59f184-man-drinking-silhouette-by-vexels.png' alt='person' className={`person ${spotId}`} />
+        < img src={require('../Assets/bar-guy.png')} alt='person' className={`person ${spotId}`} />
         :
         < img src={require('../Assets/bar-stool-2.png')}
               alt='bar-stool'
