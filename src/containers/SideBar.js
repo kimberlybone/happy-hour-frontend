@@ -23,6 +23,7 @@ export default class SideBar extends Component {
 
   handleLogout = () => {
     localStorage.clear()
+    this.props.unoccupySpots()
   }
 
   render(){

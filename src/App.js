@@ -80,14 +80,27 @@ class App extends Component {
   }
 
   occupySpot = spot => {
-    console.log('occupied');
+    // console.log('occupied');
     this.setState({
       ...this.state,
       occupied: {
         ...this.state.occupied,
         [spot]: true
       }
-    }, () => console.log(this.state))
+    })
+  }
+
+  unoccupySpots = () => {
+    this.setState({
+      ...this.state,
+      occupied: {
+        bs1: false,
+        bs2: false,
+        bs3: false,
+        bs4: false,
+        bs5: false
+      }
+    })
   }
 
   goHome = () => {
@@ -96,7 +109,7 @@ class App extends Component {
 
   render() {
     const { state: {errors, loggedInUserId, token, occupied},
-            onSubmitLogIn, onSubmitSignUp, goHome, occupySpot } = this
+            onSubmitLogIn, onSubmitSignUp, goHome, occupySpot, unoccupySpots } = this
 
     return (
       <div className="App">
@@ -125,7 +138,8 @@ class App extends Component {
                   loggedInUserId={ loggedInUserId }
                   token={ token }
                   occupied={ occupied }
-                  occupySpot={ occupySpot }/> }
+                  occupySpot={ occupySpot }
+                  unoccupySpots={ unoccupySpots }/> }
                   />
                 <Route exact
                   path= '/create-drink'
