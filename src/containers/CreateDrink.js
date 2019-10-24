@@ -55,7 +55,6 @@ export default class CreateDrink extends Component {
               ingredientsList,
               directions
             } } = this;
-      // console.log(loggedInUserId)
     const config = {
       method: 'POST',
       headers: {
@@ -114,42 +113,42 @@ export default class CreateDrink extends Component {
   render(){
     const { categories } = this.props.location.filterProps || {categories: defaultCategories}
     const { handleChange, filteredIngredients, displayIngredients, handleCreateDrink } = this
-    const { drinkName, search, directions } = this.state
+    const { drinkName, search, directions, ingredientsList } = this.state
     return(
       < div className='create-div'>
         < div className='recipe-card'>
-        < h1 >Recipe Card< / h1 >
+        < h3 className='card-main-title'> Make Your Recipe < / h3 >
           < div className='card-header'>
               < form onChange={ handleChange }>
                 {<Filter categories={ categories }
                         handleChange={ this.handleChange }/>}
 
-                Drink Name:<input type='text' name='drinkName' value={ drinkName }></input>
+                < h3 className='form-label' >What's your drink's name?< img src='https://cdn.shopify.com/s/files/1/0818/5369/files/Snowe_martinigif4_979b247b-1837-44d7-8beb-b307603f72cb.gif?11560714014684638141' alt='gif' className='card-gif'/>< /h3> <input type='text' name='drinkName' value={ drinkName }></input>
               < /form>
           < /div>
           < div className='card-main'>
           < div className='card-ingredients'>
-            Card Ingredients
-            < ul >
-              { displayIngredients() }
+            < h3 className='card-title'> Your Card Ingredients </h3>
+          < ul className='display-ingredients'>
+              { !ingredientsList.length ? <p className='placeholder'>Search and Click to add ingredients to your recipe...</p> : displayIngredients() }
             < / ul >
           < /div>
           < div className='search'>
-            Search: <input type='search' name='search' onChange={ handleChange } value={ search }></input>
+            <h3 className='card-title'>Search for Ingredients:</h3> <input type='search' name='search' onChange={ handleChange } value={ search }></input>
             < ul className='ingredients-search-list' >
               { filteredIngredients() }
             < /ul >
           < /div>
           < /div>
           < div className='card-directions'>
-            Card Directions
-            < br />
+            < h3 className='card-title'>Write your Recipe Directions Below:< /h3>
+
             < textarea className='directions-text'
                         onChange={ handleChange }
                         name='directions'
                         value={ directions }/>
             < br />
-          < button onClick={ handleCreateDrink } >Create Drink< / button>
+          < button className='button is-primary is-light side-button' onClick={ handleCreateDrink } >Create Your Drink!< / button>
           < / div>
         < / div >
       < / div >
