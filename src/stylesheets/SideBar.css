@@ -5,8 +5,11 @@
 
 .user-div {
   font-family: Optima, sans-serif;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-weight: bold;
+  border-bottom: solid;
+  /* font-size: */
 }
 
 ul {
@@ -34,4 +37,17 @@ ul {
 .favorite-side-bar {
   overflow: scroll;
   max-height: 30vh;
+}
+
+.bottom-side-bar {
+  padding-top: 20px;
+}
+
+h2.greeting {
+  font-style: italic;
+  font-family: Brush Script Std, cursive;
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  border-bottom: solid;
 }

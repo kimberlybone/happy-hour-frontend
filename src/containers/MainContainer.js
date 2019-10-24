@@ -109,9 +109,6 @@ export default class MainContainer extends Component {
           < / h1 >
         < / div>
         < div className="main-div2" ref={ mainDiv2Ref }>
-          < div className="bar-counter">
-
-          < / div >
           < div className="bar-stools" >
             { renderBarSpots() }
           < / div >
