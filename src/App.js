@@ -103,7 +103,8 @@ class App extends Component {
         bs3: false,
         bs4: false,
         bs5: false
-      }
+      },
+      canChooseSeat: true
     })
   }
 
