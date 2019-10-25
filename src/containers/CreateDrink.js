@@ -117,13 +117,13 @@ export default class CreateDrink extends Component {
     return(
       < div className='create-div'>
         < div className='recipe-card'>
-        < h3 className='card-main-title'> Make Your Recipe < / h3 >
+        < h3 className='card-main-title'>< span >< img src='https://cdn.shopify.com/s/files/1/0818/5369/files/Snowe_martinigif4_979b247b-1837-44d7-8beb-b307603f72cb.gif?11560714014684638141' alt='gif' className='card-gif'/>< /span > Make Your Recipe < / h3 >
           < div className='card-header'>
               < form onChange={ handleChange }>
                 {<Filter categories={ categories }
                         handleChange={ this.handleChange }/>}
 
-                < h3 className='form-label' >What's your drink's name?< img src='https://cdn.shopify.com/s/files/1/0818/5369/files/Snowe_martinigif4_979b247b-1837-44d7-8beb-b307603f72cb.gif?11560714014684638141' alt='gif' className='card-gif'/>< /h3> <input type='text' name='drinkName' value={ drinkName }></input>
+                < h3 className='form-label' >What's your drink's name?< /h3>< input type='text' name='drinkName' value={ drinkName }>< /input>
               < /form>
           < /div>
           < div className='card-main'>

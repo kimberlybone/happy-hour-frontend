@@ -2,9 +2,17 @@
   font-style: italic;
   font-family: Brush Script Std, cursive;
   font-weight: bold;
-  color: white;
+  color: #d1ae73;
   font-size: 60px;
   text-shadow: 2px 2px 4px #000000;
+  border-style: solid;
+  border-radius: 4px;
+  margin-top: 2%;
+  width: 35%;
+  position: absolute;
+  left: 40%;
+  background-color: #fffcf7;
+  box-shadow: 5px 5px 4px #000000;
 }
 
 .main-container {
@@ -24,6 +32,7 @@
   background-image: url('../Assets/cartoon-bar-background.jpg');
   background-position: center;
   background-size: cover;
+  text-align: center;
   /*filter: blur(8px);
   -webkit-filter: blur(8px);*/
 }
@@ -196,7 +205,7 @@ div.menu-close {
   top: 30%;
   left: 16%;
   max-height: auto;
-  min-height: 50%;
+  min-height: 80%;
   width: 25%;
   z-index: 10;
 }
@@ -239,4 +248,19 @@ div.menu-close {
   min-height: 80%;
   width: 25%;
   z-index: 10;
+}
+
+.drink-pic {
+  position: absolute;
+  z-index: 150;
+  top: 43%;
+  left: 35%;
+  width: 7%;
+  box-shadow: 5px 5px 4px #000000;
+
+}
+
+.drink-pic:hover {
+  cursor: pointer;
+  transform: scale(1.05)
 }

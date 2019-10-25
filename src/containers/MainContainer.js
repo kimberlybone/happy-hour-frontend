@@ -68,14 +68,14 @@ export default class MainContainer extends Component {
   }
 
   renderBarSpots = () => {
-    const {occupied, occupySpot} = this.props
+    const {occupied, occupySpot, drinkUrl, consumeDrink} = this.props
     return (
       < Fragment >
-        < BarSpot occupied={ occupied['bs1'] } occupySpot={ occupySpot } spotId='bs1' />
-      < BarSpot occupied={ occupied['bs2'] } occupySpot={ occupySpot } spotId='bs2' />
-    < BarSpot occupied={ occupied['bs3'] } occupySpot={ occupySpot } spotId='bs3' />
-  < BarSpot occupied={ occupied['bs4'] } occupySpot={ occupySpot } spotId='bs4' />
-< BarSpot occupied={ occupied['bs5'] } occupySpot={ occupySpot } spotId='bs5' />
+        < BarSpot occupied={ occupied['bs1'] } occupySpot={ occupySpot } spotId='bs1' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+      < BarSpot occupied={ occupied['bs2'] } occupySpot={ occupySpot } spotId='bs2' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+    < BarSpot occupied={ occupied['bs3'] } occupySpot={ occupySpot } spotId='bs3' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+  < BarSpot occupied={ occupied['bs4'] } occupySpot={ occupySpot } spotId='bs4' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+< BarSpot occupied={ occupied['bs5'] } occupySpot={ occupySpot } spotId='bs5' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
       < / Fragment >
     )
   }

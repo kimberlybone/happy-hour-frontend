@@ -12,7 +12,8 @@ export default class HomeContainer extends Component {
     viewMenu: false,
     user: null,
     showFavorites: false,
-    errors: []
+    errors: [],
+    drinkUrl: null
   }
 
 
@@ -44,6 +45,8 @@ export default class HomeContainer extends Component {
   updateBudget = (user, recipe) => {
     const { loggedInUserId, token } = this.props
     const newBudget = user.budget - recipe.price
+    const drinkUrl = recipe['img_url']
+    console.log(recipe);
     if(newBudget >= 0){
       const config = {
         method: 'PATCH',
@@ -59,7 +62,10 @@ export default class HomeContainer extends Component {
       fetch(URL + '/users/' + loggedInUserId, config)
       .then(res => res.json())
       .then(user => {
-        this.setState({user})
+        this.setState({
+          user,
+          drinkUrl
+        })
       })
       alert(`You just bought ${recipe.name} for $${recipe.price}!`)
     } else {
@@ -70,7 +76,12 @@ export default class HomeContainer extends Component {
     }
   }
 
-
+  consumeDrink = () => {
+    alert('🍸 Mmmm tasty 🍸')
+    this.setState({
+      drinkUrl: null
+    })
+  }
 
 // HANDLERS
   handleViewMenu = () => {
@@ -128,13 +139,14 @@ export default class HomeContainer extends Component {
 
   render() {
     const { props:{ loggedInUserId, token, occupied, occupySpot, unoccupySpots },
-            state:{ viewMenu, user, showFavorites, errors },
+            state:{ viewMenu, user, showFavorites, errors, drinkUrl },
             handleFavorites,
             updateBudget,
             handleCloseMenu,
             handleViewMenu,
             handleAddFavorite,
-            deleteFavorite } = this
+            deleteFavorite,
+            consumeDrink } = this
 
     return (
       <div className="home-container">
@@ -153,12 +165,14 @@ export default class HomeContainer extends Component {
             token={ token }
             user={ user }
             errors={ errors }
+            drinkUrl={ drinkUrl }
             handleCloseMenu={ handleCloseMenu }
             handleAddFavorite={ handleAddFavorite }
             deleteFavorite={ deleteFavorite }
             updateBudget={updateBudget}
             occupied={ occupied }
             occupySpot={ occupySpot }
+            consumeDrink={ consumeDrink }
             />
       </div>
     )

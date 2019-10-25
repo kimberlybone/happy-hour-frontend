@@ -100,8 +100,12 @@ input {
 .card-gif {
   width: 60px;
   /* height: 90px; */
-  max-height: 60%;
+  max-height: 80%;
   min-height: 10%;
-  float: left;
-  position: relative;
+  left: 85%;
+  top: 2%;
+  position: absolute;
+  border-radius: 100%;
+  border-style: solid;
+  border-color: #ebfffc;
 }
