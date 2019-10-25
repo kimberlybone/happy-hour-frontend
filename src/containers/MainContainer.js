@@ -107,6 +107,7 @@ export default class MainContainer extends Component {
           < h1 className="main-title" >
             Happy Hour
           < / h1 >
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/WwnBlqUTQi0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         < / div>
         < div className="main-div2" ref={ mainDiv2Ref }>
           < div className="bar-stools" >
