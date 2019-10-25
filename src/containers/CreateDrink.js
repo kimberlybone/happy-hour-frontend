@@ -16,6 +16,7 @@ export default class CreateDrink extends Component {
     drinkName: '',
     ingredientsList: [],
     directions: '',
+    showGIF: false
   }
 
   handleChange = e => {
@@ -74,10 +75,18 @@ export default class CreateDrink extends Component {
     fetch(URL + '/recipes', config)
     .then(res => res.json())
     .then(recipe => {
-      alert(`Your ${recipe.name} has been created!`)
-      goHome()
+      this.setState({
+        showGIF: true
+      })
+        setTimeout(() => {
+          this.setState({showGIF:false}, () => alert(`Your ${recipe.name} has been created!`))
+          goHome()
+        }, 4000)
     })
   }
+
+
+
 
   displayIngredients = () => {
     const { ingredientsList } = this.state;
@@ -117,6 +126,9 @@ export default class CreateDrink extends Component {
     return(
       < div className='create-div'>
         < div className='recipe-card'>
+        {
+          this.state.showGIF ? <img className='shaker-gif' src='https://media.giphy.com/media/1dHxZ4aEUjKQBbtN5Z/giphy.gif' /> : null
+        }
         < h3 className='card-main-title'>< span >< img src='https://cdn.shopify.com/s/files/1/0818/5369/files/Snowe_martinigif4_979b247b-1837-44d7-8beb-b307603f72cb.gif?11560714014684638141' alt='gif' className='card-gif'/>< /span > Make Your Recipe < / h3 >
           < div className='card-header'>
               < form onChange={ handleChange }>
