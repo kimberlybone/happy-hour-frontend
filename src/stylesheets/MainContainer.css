@@ -264,3 +264,19 @@ div.menu-close {
   cursor: pointer;
   transform: scale(1.05)
 }
+.tv-news {
+  left: 19%;
+  border: solid;
+  position: absolute;
+  top: 5%;
+  box-shadow: -5px -5px 4px -1px #000000;
+  border-radius: 3px;
+}
+.tv-sports {
+  left: 77%;
+  border: solid;
+  position: absolute;
+  top: 5%;
+  box-shadow: 5px -5px 4px -1px #000000;
+  border-radius: 3px;
+}

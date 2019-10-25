@@ -107,6 +107,18 @@ export default class MainContainer extends Component {
           < h1 className="main-title" >
             Happy Hour
           < / h1 >
+          <iframe width="250" height="150"
+                  src="https://www.youtube.com/embed/l4R-Yg82KqU?autoplay=1&start=4&loop=1&playlist=l4R-Yg82KqU"
+                  frameborder="0"
+                  className="tv-news"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+                <iframe width="250" height="150"
+                  src="https://www.youtube.com/embed/QTFK0exr7uQ?autoplay=1&start=4&loop=1&&playlist=QTFK0exr7uQ"
+                  frameborder="0"
+                  className="tv-sports"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
         < / div>
         < div className="main-div2" ref={ mainDiv2Ref }>
           < div className="bar-stools" >

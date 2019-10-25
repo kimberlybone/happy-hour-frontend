@@ -109,3 +109,13 @@ input {
   border-style: solid;
   border-color: #ebfffc;
 }
+.shaker-gif {
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  z-index: 100;
+  /* background-color: white; */
+  border-radius: 4px;
+}
