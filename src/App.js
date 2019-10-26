@@ -29,7 +29,6 @@ class App extends Component {
   setAuth = (loggedInUserId, token) => {
     localStorage.loggedInUserId = loggedInUserId;
     localStorage.token = token;
-    console.log(localStorage);
     this.setState({
       loggedInUserId,
       token
@@ -52,6 +51,7 @@ class App extends Component {
         this.setState({
           errors: user.errors
         })
+        setTimeout(() => this.setState({errors: []}), 2500)
       } else {
         this.setAuth(user.user_id, user.token)
       }
@@ -74,6 +74,7 @@ class App extends Component {
         this.setState({
           errors: user.errors
         })
+        setTimeout(() => this.setState({errors: []}), 5000)
       } else {
         this.setAuth(user.user_id, user.token)
       }

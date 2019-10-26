@@ -13,6 +13,7 @@ export default class LoginForm extends Component {
   renderForm = () => {
     const { props: {isReturningUser, errors}, onFormChange, renderSignUpForm, formSubmit, renderErrors,
             state: {name, password}} = this;
+
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit} className='login-form'>
       { errors ? renderErrors() : null }
@@ -95,7 +96,7 @@ export default class LoginForm extends Component {
   }
 
   renderErrors = () => {
-    return this.props.errors.map(error => error)
+    return this.props.errors.map(error => <p key={error} className='error'>{error}</p>)
   }
 
   onFormChange = e => {
