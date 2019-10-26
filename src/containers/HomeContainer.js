@@ -45,6 +45,7 @@ export default class HomeContainer extends Component {
   updateBudget = (user, recipe) => {
     const { loggedInUserId, token } = this.props
     const newBudget = user.budget - recipe.price
+
     const drinkUrl = recipe['img_url']
     // console.log(recipe);
     if(newBudget >= 0){
