@@ -4,6 +4,7 @@
   background-image: url('../Assets/bar-background.jpg');
   background-size: 100% 100%;
 }
+
 .recipe-card {
   width: 50%;
   height: 80%;
@@ -20,15 +21,18 @@
     'card-main'
     'card-directions';
 }
+
 .card-header {
   grid-area: 'card-header';
 }
+
 .card-main {
   grid-area: 'card-main';
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-areas: 'card-ingredients search'
 }
+
 .card-ingredients {
   grid-area: 'card-ingredients';
   border-bottom: inset;
@@ -37,6 +41,7 @@
   padding-right: 10px;
   padding-left: 10px;
 }
+
 .search {
   grid-area: 'search';
   border-bottom: inset;
@@ -44,6 +49,7 @@
   padding-right: 10px;
   padding-left: 10px;
 }
+
 .card-directions {
   grid-area: 'card-directions';
   text-align: center;
@@ -79,24 +85,32 @@ textarea {
   height: 30%;
   border-radius: 4px;
 }
+
 .card-title {
   font-size: 18px;
   font-family: Optima, sans-serif;
-
+  color: #00ccad;
+  font-weight: bold;
 }
+
 .card-main-title {
   font-size: 25px;
   font-style: italic;
   font-family: Brush Script Std, cursive;
   font-weight: bold;
 }
+
 .form-label {
   display: inline;
   font-family: Optima, sans-serif;
+  color: #00ccad;
+  font-weight: bold;
 }
+
 input {
   border-radius: 4px;
 }
+
 .card-gif {
   width: 60px;
   /* height: 90px; */
@@ -107,8 +121,10 @@ input {
   position: absolute;
   border-radius: 100%;
   border-style: solid;
-  border-color: #ebfffc;
+  border-color: #00ccad;
+  border-width: thin;
 }
+
 .shaker-gif {
   width: 50%;
   height: 80%;

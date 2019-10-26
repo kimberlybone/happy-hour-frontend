@@ -13,6 +13,7 @@ export default class LoginForm extends Component {
   renderForm = () => {
     const { props: {isReturningUser, errors}, onFormChange, renderSignUpForm, formSubmit, renderErrors,
             state: {name, password}} = this;
+
     return (
       < form onChange={ onFormChange } onSubmit={formSubmit} className='login-form'>
       { errors ? renderErrors() : null }
@@ -95,7 +96,7 @@ export default class LoginForm extends Component {
   }
 
   renderErrors = () => {
-    return this.props.errors.map(error => error)
+    return this.props.errors.map(error => <p key={error} className='error'>{error}</p>)
   }
 
   onFormChange = e => {
@@ -124,12 +125,14 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const { props: {isReturningUser}, renderForm } = this;
+    const { renderForm } = this;
     // console.log(isReturningUser);
     return (
 
       < div className='form-div'>
-        < h1 className='login-title' style={{fontSize: '40px'}}>Happy Hour 🍸< /h1 >
+        < h1 className='login-title' style={{fontSize: '40px'}}>Happy Hour
+          < span role='img' aria-label='gif'> 🍸 < /span>
+        < /h1 >
         < NavLink to='/login' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Log In< /NavLink>
         < NavLink to='/signup' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Sign Up< /NavLink >
         { renderForm() }

@@ -3,8 +3,6 @@ import '../stylesheets/MainContainer.css';
 import Menu from '../components/Menu'
 import BarSpot from '../components/BarSpot'
 
-// import image from '~/happy-hour-frontend/public/Assets/cartoon-counter.jpg'
-
 const URL = 'http://localhost:3000';
 
 export default class MainContainer extends Component {
@@ -35,7 +33,7 @@ export default class MainContainer extends Component {
 
   }
 
-
+// MENU FUNCTIONS
   handleFilteredItems = (category) => {
     const {menuItems} = this.state
     if(category !== 'All'){
@@ -67,15 +65,16 @@ export default class MainContainer extends Component {
     }
   }
 
+// BAR STOOL METHOD
   renderBarSpots = () => {
     const {occupied, occupySpot, drinkUrl, consumeDrink} = this.props
     return (
       < Fragment >
         < BarSpot occupied={ occupied['bs1'] } occupySpot={ occupySpot } spotId='bs1' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
-      < BarSpot occupied={ occupied['bs2'] } occupySpot={ occupySpot } spotId='bs2' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
-    < BarSpot occupied={ occupied['bs3'] } occupySpot={ occupySpot } spotId='bs3' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
-  < BarSpot occupied={ occupied['bs4'] } occupySpot={ occupySpot } spotId='bs4' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
-< BarSpot occupied={ occupied['bs5'] } occupySpot={ occupySpot } spotId='bs5' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+        < BarSpot occupied={ occupied['bs2'] } occupySpot={ occupySpot } spotId='bs2' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+        < BarSpot occupied={ occupied['bs3'] } occupySpot={ occupySpot } spotId='bs3' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+        < BarSpot occupied={ occupied['bs4'] } occupySpot={ occupySpot } spotId='bs4' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
+        < BarSpot occupied={ occupied['bs5'] } occupySpot={ occupySpot } spotId='bs5' drinkUrl={ drinkUrl } consumeDrink={ consumeDrink }/>
       < / Fragment >
     )
   }
@@ -91,8 +90,6 @@ export default class MainContainer extends Component {
               handleAddFavorite,
               errors,
               deleteFavorite,
-              occupied,
-              occupySpot
             },
             mainDiv1Ref,
             mainDiv2Ref,
@@ -102,29 +99,31 @@ export default class MainContainer extends Component {
             renderBarSpots } = this
 
     return (
-      <div className="main-container">
+      < div className="main-container">
         < div className="main-div" ref={ mainDiv1Ref }>
           < h1 className="main-title" >
             Happy Hour
           < / h1 >
           <iframe width="250" height="150"
                   src="https://www.youtube.com/embed/l4R-Yg82KqU?autoplay=1&start=4&loop=1&playlist=l4R-Yg82KqU"
-                  frameborder="0"
+                  title='tv-news'
+                  frameBorder="0"
                   className="tv-news"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
+                  allowFullScreen></iframe>
                 <iframe width="250" height="150"
-                  src="https://www.youtube.com/embed/QTFK0exr7uQ?autoplay=1&start=4&loop=1&&playlist=QTFK0exr7uQ"
-                  frameborder="0"
+                  src="https://www.youtube.com/embed/QTFK0exr7uQ?autoplay=1&start=15&loop=1&&playlist=QTFK0exr7uQ"
+                  title='tv-news'
+                  frameBorder="0"
                   className="tv-sports"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
+                  allowFullScreen></iframe>
         < / div>
         < div className="main-div2" ref={ mainDiv2Ref }>
           < div className="bar-stools" >
             { renderBarSpots() }
           < / div >
-        </div>
+        < /div>
         {
           this.props.viewMenu
           ?
@@ -144,7 +143,7 @@ export default class MainContainer extends Component {
           />
         : null
       }
-      </div>
+      < /div>
     )
   }
 }

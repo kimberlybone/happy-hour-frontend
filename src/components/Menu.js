@@ -47,7 +47,8 @@ export default class Menu extends Component {
     const { blurDivs, handleCloseMenu } = this.props
 
     blurDivs(false);
-    handleCloseMenu();
+    setTimeout(() => handleCloseMenu(), 900)
+    //Added a timeout to the menu close so the css glitch will be more hidden
   }
 
   componentDidMount() {
