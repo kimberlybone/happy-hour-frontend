@@ -51,3 +51,7 @@ h2.greeting {
   padding-bottom: 25px;
   border-bottom: solid;
 }
+
+.favorite-list {
+  font-family: Optima, sans-serif;
+}

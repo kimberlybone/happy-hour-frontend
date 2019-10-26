@@ -90,12 +90,12 @@ export default class MainContainer extends Component {
               handleAddFavorite,
               errors,
               deleteFavorite,
-              blurDivs
             },
             mainDiv1Ref,
             mainDiv2Ref,
             handleFilteredItems,
             getCategories,
+            blurDivs,
             renderBarSpots } = this
 
     return (
