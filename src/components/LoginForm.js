@@ -124,12 +124,14 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    const { props: {isReturningUser}, renderForm } = this;
+    const { renderForm } = this;
     // console.log(isReturningUser);
     return (
 
       < div className='form-div'>
-        < h1 className='login-title' style={{fontSize: '40px'}}>Happy Hour 🍸< /h1 >
+        < h1 className='login-title' style={{fontSize: '40px'}}>Happy Hour
+          < span role='img' aria-label='gif'> 🍸 < /span>
+        < /h1 >
         < NavLink to='/login' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Log In< /NavLink>
         < NavLink to='/signup' activeClassName='button is-primary is-light is-active' className="button is-primary is-light login-btn">Sign Up< /NavLink >
         { renderForm() }

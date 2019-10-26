@@ -81,11 +81,9 @@ export default class CreateDrink extends Component {
         setTimeout(() => {
           this.setState({showGIF:false}, () => alert(`Your ${recipe.name} has been created!`))
           goHome()
-        }, 4000)
+        }, 3000)
     })
   }
-
-
 
 
   displayIngredients = () => {
@@ -108,7 +106,6 @@ export default class CreateDrink extends Component {
   }
 
   componentDidMount() {
-    // const { token } = this.props.location.filterProps
     const config = {
       headers: {
         'Authorization': localStorage.token
@@ -127,7 +124,7 @@ export default class CreateDrink extends Component {
       < div className='create-div'>
         < div className='recipe-card'>
         {
-          this.state.showGIF ? <img className='shaker-gif' src='https://media.giphy.com/media/1dHxZ4aEUjKQBbtN5Z/giphy.gif' /> : null
+          this.state.showGIF ? <img className='shaker-gif' src='https://media.giphy.com/media/1dHxZ4aEUjKQBbtN5Z/giphy.gif' alt='gif'/> : null
         }
         < h3 className='card-main-title'>< span >< img src='https://cdn.shopify.com/s/files/1/0818/5369/files/Snowe_martinigif4_979b247b-1837-44d7-8beb-b307603f72cb.gif?11560714014684638141' alt='gif' className='card-gif'/>< /span > Make Your Recipe < / h3 >
           < div className='card-header'>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SideBar from './SideBar'
 import MainContainer from './MainContainer'
 import '../stylesheets/HomeContainer.css';
-import {Route, withRouter} from 'react-router-dom'
+// import {Route, withRouter} from 'react-router-dom'
 
 const URL = 'http://localhost:3000';
 
@@ -17,7 +17,7 @@ export default class HomeContainer extends Component {
   }
 
 
-  // FETCH USER INFO
+// FETCH USER INFO
   componentDidMount() {
     const { loggedInUserId, token } = this.props
     fetch(URL + '/users/' + loggedInUserId, {
@@ -46,7 +46,7 @@ export default class HomeContainer extends Component {
     const { loggedInUserId, token } = this.props
     const newBudget = user.budget - recipe.price
     const drinkUrl = recipe['img_url']
-    console.log(recipe);
+    // console.log(recipe);
     if(newBudget >= 0){
       const config = {
         method: 'PATCH',
@@ -122,14 +122,14 @@ export default class HomeContainer extends Component {
     fetch(URL + '/favorites', config)
     .then(res => res.json())
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.errors) {
-        console.log(response.errors);
+        // console.log(response.errors);
         this.setState({errors: response.errors})
         setTimeout(() => this.setState({errors: []}), 2500)
       } else {
         this.setState({
-          user: response,
+          user: response
         })
       }
     })
