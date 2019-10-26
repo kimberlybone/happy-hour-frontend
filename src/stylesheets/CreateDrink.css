@@ -89,7 +89,7 @@ textarea {
 .card-title {
   font-size: 18px;
   font-family: Optima, sans-serif;
-  color: #ffcc00;
+  color: #00ccad;
   font-weight: bold;
 }
 
@@ -103,7 +103,7 @@ textarea {
 .form-label {
   display: inline;
   font-family: Optima, sans-serif;
-  color: #ffcc00;
+  color: #00ccad;
   font-weight: bold;
 }
 
@@ -121,7 +121,7 @@ input {
   position: absolute;
   border-radius: 100%;
   border-style: solid;
-  border-color: #ffcc00;
+  border-color: #00ccad;
   border-width: thin;
 }
 
