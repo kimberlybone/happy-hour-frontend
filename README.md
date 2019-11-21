@@ -1,7 +1,7 @@
-Happy Hour 
+Happy Hour
 
+Our app provides a virtual bar experience for users where users can choose a seat at the bar, buy a drink, favorite a drink, and create their own drink.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
