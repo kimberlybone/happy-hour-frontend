@@ -1,11 +1,11 @@
-# **Happy Hour**
+# **Happy Hour Frontend**
 
 Our app provides a virtual bar experience for users where users can choose a seat at the bar, buy a drink, favorite a drink, and create their own drink.
 
 ---
 
 ## Motivation
-Who doesn't appreciate a good happy hour?
+Who doesn't appreciate a good happy hour cocktail?
 
 ## Features
 - Search ingredients
@@ -37,12 +37,14 @@ Who doesn't appreciate a good happy hour?
 13. The user's newly created drink will now be shown on the menu
 
 ## Technologies
-- API: (https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita)
+
 - React
-- Ruby on Rails
+- JSX
 - Vanilla JavaScript
 - iFrame
+- Vanilla CSS
 - Bulma CSS Framework(Login Page)
+- React Router
 
 ## Installation
 *To view live version, go to this URL:[]()*
