@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Happy Hour Frontend
 
-## Available Scripts
+Our app provides a virtual bar experience for users where users can choose a seat at the bar, buy a drink, favorite a drink, and create their own drink.
 
-In the project directory, you can run:
+## Motivation
 
-### `yarn start`
+Who doesn't appreciate a good happy hour cocktail?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Search ingredients
 
-### `yarn test`
+- Filter by drink category
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Buy a drink
 
-### `yarn build`
+- Favorite a drink
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Create own drink
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Watch TV
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Choose a seat
 
-### `yarn eject`
+- Drink your cocktail
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Make account and log in
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Validations on account information
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Instructions
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- A user can log in or sign up
 
-## Learn More
+- Choose a seat to sit
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- View menu with drink names, ingredients, and drink creator
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Can filter drinks by category on the menu
 
-### Code Splitting
+- Can click the heart to favorite drink which will show up in side bar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Can click drink name to buy
 
-### Analyzing the Bundle Size
+- After buying a user can close the menu and drink will appear on bar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- User can click on the drink to chug it
 
-### Making a Progressive Web App
+- On the menu, a user can click the "Create a Drink" button
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- This page allows the user to choose a category, name, ingredients and instructions for their drink
 
-### Advanced Configuration
+- User can choose a maximum of 5 ingredients
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Once the drink is made, the user will be redirected to the bar
 
-### Deployment
+- The user's newly created drink will now be shown on the menu
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Technologies
+- React
+- JSX
+- Vanilla JavaScript
+- iFrame
+- Vanilla CSS
+- Bulma CSS Framework (Login Page)
+- React Router
 
-### `yarn build` fails to minify
+## Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Check back soon for a link to the live version of this app.
+
+To test locally, follow the instructions below:
+
+1. Clone the **headless-horse-rider** branch of this repository to your local machine and navigate into the directory from your terminal
+2. Run `npm install`
+3. Run `npm start`
+4. Go to [backend repository](https://github.com/mrwerner392/happy-hour-backend) to view backend installation
+
+## Authors
+[Kimberly Bone](https://github.com/kimberlybone) & [Matt Werner](https://github.com/mrwerner392)
