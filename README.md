@@ -24,6 +24,8 @@ Who doesn't appreciate a good happy hour cocktail?
 1. A user can log in or sign up
 
 2. Choose a seat to sit
+![Alt Text](http://www.giphy.com/gifs/PizipdfC2vmkhrsPB4)
+
 3. View menu with drink names, ingredients, and drink creator
 4. Can filter drinks by category on the menu
 5. Can click the heart to favorite drink which will show up in side bar
