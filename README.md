@@ -21,33 +21,33 @@ Who doesn't appreciate a good happy hour cocktail?
 - Validations on account information
 
 ## Instructions
-1. A user can log in or sign up
+***1. A user can log in or sign up***
 
-2. Choose a seat to sit
+***2. Choose a seat to sit***
 
-3. View menu with drink names, ingredients, and drink creator
+***3. View menu with drink names, ingredients, and drink creator***
 
 ![Alt Text](/src/Assets/HHseat.gif)
 
-4. Can filter drinks by category on the menu
+***4. Can filter drinks by category on the menu***
 
 ![Alt Text](/src/Assets/HHFilter.gif)
 
-5. Can click the heart to favorite drink which will show up in side bar
+***5. Can click the heart to favorite drink which will show up in side bar***
 
 ![Alt Text](/src/Assets/HHFavorite.gif)
 
-6. Can click drink name to buy
-7. After buying a user can close the menu and drink will appear on bar
-8. User can click on the drink to chug it
-9. On the menu, a user can click the "Create a Drink" button
-10. This page allows the user to choose a category, name, ingredients and instructions for their drink
-11. User can choose a maximum of 5 ingredients
+***6. Can click drink name to buy***
+***7. After buying a user can close the menu and drink will appear on bar***
+***8. User can click on the drink to chug it***
+***9. On the menu, a user can click the "Create a Drink" button***
+***10. This page allows the user to choose a category, name, ingredients and instructions for their drink***
+***11. User can choose a maximum of 5 ingredients***
 
 ![Alt Text](/src/Assets/HHSearchIngredient.gif)
 
-12. Once the drink is made, the user will be redirected to the bar
-13. The user's newly created drink will now be shown on the menu
+***12. Once the drink is made, the user will be redirected to the bar***
+***13. The user's newly created drink will now be shown on the menu***
 
 ## Technologies
 
