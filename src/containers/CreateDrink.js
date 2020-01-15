@@ -20,7 +20,7 @@ export default class CreateDrink extends Component {
   }
 
   handleChange = e => {
-    if (e.target.value.length < 500) {
+    if ( e.target.value.length < 500 ) {
       this.setState({
         [e.target.name]: e.target.value
       })
@@ -34,9 +34,9 @@ export default class CreateDrink extends Component {
     const ingredientName = e.target.innerText;
     const { ingredientsList } = this.state
 
-    if (ingredientsList.length < 5 && !ingredientsList.includes(ingredientName)) {
+    if ( ingredientsList.length < 5 && !ingredientsList.includes(ingredientName) ) {
       this.setState(prevState => {
-        return {ingredientsList: [...prevState.ingredientsList, ingredientName]}
+        return {ingredientsList: [...prevState.ingredientsList, ingredientName] }
       })
     } else {
       return null
@@ -73,8 +73,8 @@ export default class CreateDrink extends Component {
     }
 
     fetch(URL + '/recipes', config)
-    .then(res => res.json())
-    .then(recipe => {
+    .then( res => res.json())
+    .then( recipe => {
       this.setState({
         showGIF: true
       })
@@ -134,8 +134,8 @@ export default class CreateDrink extends Component {
           < / h3 >
           < div className='card-header'>
               < form onChange={ handleChange }>
-                {<Filter categories={ categories }
-                        handleChange={ this.handleChange }/>}
+                { <Filter categories={ categories }
+                        handleChange={ this.handleChange }/> }
 
                 < h3 className='form-label' >What's your drink's name? < /h3>< input type='text' name='drinkName' value={ drinkName }>< /input>
               < /form>
@@ -144,7 +144,7 @@ export default class CreateDrink extends Component {
           < div className='card-ingredients'>
             < h3 className='card-title'> Your Card Ingredients: </h3>
           < ul className='display-ingredients'>
-              { !ingredientsList.length ? <p className='placeholder'>Search and Click to add ingredients to your recipe...</p> : displayIngredients() }
+              { !ingredientsList.length ? <p className='placeholder'>Search, click and add a max of 5 ingredients to your recipe...</p> : displayIngredients() }
             < / ul >
           < /div>
           < div className='search'>

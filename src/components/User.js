@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 export default class User extends Component {
   render(){
@@ -12,7 +12,6 @@ export default class User extends Component {
         <li>Budget: ${budget}</li>
       </ul>
       </div>
-
     )
   }
 }
