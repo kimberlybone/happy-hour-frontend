@@ -63,7 +63,7 @@ Who doesn't appreciate a good happy hour cocktail?
 <!-- *To view live version, go to this URL:[]()* -->
 
 *To view locally, follow the instructions below*
-1. Clone repository
+1. Clone repository (Use the headless-horse-rider branch!)
 
   ```
   npm install
