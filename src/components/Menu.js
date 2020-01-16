@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Filter from './Filter'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // const URL = 'http://localhost:3000';
 
@@ -8,17 +8,17 @@ export default class Menu extends Component {
 
   findFavoriteId = (id) => {
     const { props: { user } } = this;
-    let favorite = user.favorites.find(favorite => favorite.recipe.id === id)
+    let favorite = user.favorites.find( favorite => favorite.recipe.id === id )
     return favorite.id
   }
 
 
   renderMenuItems = () => {
-    const { props: {user,
+    const { props: { user,
                     menuItems,
                     handleAddFavorite,
                     updateBudget,
-                    deleteFavorite},
+                    deleteFavorite },
                     findFavoriteId } = this;
 
     const favRecipeIds = user.favorites.map(favorite => favorite.recipe.id)
@@ -35,7 +35,7 @@ export default class Menu extends Component {
             < span className={ className } onClick={ favRecipeIds.includes(id) ?  () => deleteFavorite(findFavoriteId(id)) : () => handleAddFavorite(id)}>
               { favRecipeIds.includes(id) ? ' ♥' : ' ♡'}
           < /span>
-          < p style={{fontSize: 8}}>Made By: {user_name}< /p>
+          < p style={{fontSize: 8}}>Made By: { user_name }< /p>
           < / ul >
           < p className='ingredients'>{ ingredientList.join(', ') }< / p >
         < / Fragment >

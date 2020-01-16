@@ -60,7 +60,7 @@ Who doesn't appreciate a good happy hour cocktail?
 - React Router
 
 ## Installation
-*To view live version, go to this URL:[]()*
+<!-- *To view live version, go to this URL:[]()* -->
 
 *To view locally, follow the instructions below*
 1. Clone repository
@@ -71,6 +71,7 @@ Who doesn't appreciate a good happy hour cocktail?
   ```
 
 2. Go to backend repository to view backend installation
+URL:[View Backend](https://github.com/kimberlybone/happy-hour-backend)
 
 ---
 ***Authors: [Kimberly Bone](https://github.com/kimberlybone) & [Matt Werner](https://github.com/mrwerner392)***
